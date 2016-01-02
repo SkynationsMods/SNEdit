@@ -1,6 +1,7 @@
 ﻿using SharedGameData;
 using SNScript;
 using GameServer;
+using SNEdit;
 using System;
 using System.Linq;
 
@@ -68,6 +69,9 @@ namespace ScriptsExample
 
             //Get the difference between the two position
             dynamic = pos1 - pos2;
+
+            locationList.add(pos1);
+            locationList.add(pos2);
 
             //Get every block on X
             while(dynamic.x != 0)
