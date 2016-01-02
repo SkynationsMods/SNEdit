@@ -1,6 +1,7 @@
 ﻿using SharedGameData;
 using SNScript;
 using GameServer;
+using SNEdit;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -92,6 +93,9 @@ namespace ScriptsExample
             dynamic.X = pos1.X - pos2.X;
             dynamic.Y = pos1.Y - pos2.Y;
             dynamic.Z = pos1.Z - pos2.Z;
+
+            locationList.add(pos1);
+            locationList.add(pos2);
 
             //Get every block on X
             while (dynamic.x != 0)
