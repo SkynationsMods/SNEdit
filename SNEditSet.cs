@@ -2,7 +2,13 @@
 using SNScript;
 using GameServer;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using PreciseMaths;
+using MoreBlocksScripts;
 
 namespace ScriptsExample
 {
@@ -26,27 +32,43 @@ namespace ScriptsExample
             get { return Priviledges.Player; }
         }
 
-        public SNEditSet(IGameServer server) : base(server)
+        public SNEditSet(IGameServer server)
+            : base(server)
         {
         }
 
         public override bool Use(IActor actor, string message, string[] parameters)
         {
             
+            MoreBlocksScripts.SNEdit helper = new MoreBlocksScripts.SNEdit();
+
             //Only takes 2 arguments //set and blockID
-            if(parameters.Length > 2)
+            if (parameters.Length > 2)
             {
-                Server.ChatManager.SendMessage("Too many arguments.", actor);
+                Server.ChatManager.SendActorMessage("Too many arguments.", actor);
                 return false;
             }
 
             //Check if entered blockID is valid TODO
-            if(true)
+            if (true)
             {
-                ushort blockID = parameters[1];
-            } else
+                int _ID = new int();
+
+                try
+                {
+                    _ID = Int32.Parse(parameters[1]);
+                }
+                catch (FormatException e)
+                {
+                    Server.ChatManager.SendActorMessage("Parameter could not be parsed.", actor);
+                    return false;
+                }
+
+                ushort blockID = (ushort)_ID;
+            }
+            else
             {
-                Server.ChatManager.SendMessage("Invalid block entered.", actor);
+                Server.ChatManager.SendActorMessage("Invalid block entered.", actor);
                 return false;
             }
 
@@ -61,28 +83,30 @@ namespace ScriptsExample
             List<Point3D> locationList = new List<Point3D>();
 
             //Maybe add this into a class later?
-            if(!checkPositions(actor, out pos1, out pos2))
+            if (!checkPositions(actor, out pos1, out pos2))
             {
                 return false;
             }
 
             //Get the difference between the two position
-            dynamic = pos1 - pos2;
+            dynamic.X = pos1.X - pos2.X;
+            dynamic.Y = pos1.Y - pos2.Y;
+            dynamic.Z = pos1.Z - pos2.Z;
 
             //Get every block on X
-            while(dynamic.x != 0)
+            while (dynamic.x != 0)
             {
                 Point3D temp = new Point3D();
                 temp = pos1;
                 temp.x = pos1 + dynamic.x;
 
                 //Get every block on Y
-                while(dynamic.y != 0)
+                while (dynamic.y != 0)
                 {
                     temp.y = dynamic.y;
 
                     //Get every block on Z
-                    while(dynamic.z != 0)
+                    while (dynamic.z != 0)
                     {
                         temp.z = dynamic.z;
                         locationList.add(temp);
