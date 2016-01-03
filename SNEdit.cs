@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PreciseMaths;
+using GameServer;
+using GameServer.World.Chunks;
 
 namespace MoreBlocksScripts
 {
     public class SNEdit
     {
+        //TODOD, need to refernece the game server properly...
+        public static IGameServer Server;
+
         public SNEdit()
         {
             //Contstructor
@@ -42,26 +47,41 @@ namespace MoreBlocksScripts
 
         public IChunk getChunkFromGlobal(Point3D pos, IActor actor)
         {
+            //Get the server
+            Server = actor.State as IGameServer;
+
+            //Chunk ID
             Point3D staticChunkKey = this.GetChunkKeyFromGlobalPos(pos.ToDoubleVector3);
-            Dictionary ChunkDictionary = CreateChunkDictionary(actor.systemID);
-            IChunk sourceChunk = this.ChunkDictionary[staticChunkKey];
+
+            var allSystems = Server.Biomes.GetSystems();
+
+            IBiomeSystem currentSystem;
+
+            allSystems.TryGetValue(actor.InstanceID, out currentSystem);
+
+            //Dictionary of chunks
+            var ChunkDictionary = CreateChunkDictionary(currentSystem);
+            Chunk sourceChunk = (Chunk)ChunkDictionary[staticChunkKey];
             return sourceChunk;
         }
 
         //For commands to check if positions have been set
         public bool checkPositions(IActor actor, out Point3D pos1, out Point3D pos2)
         {
+            //Get the server
+            Server = actor.State as IGameServer;
+
             pos1 = (Point3D)actor.SessionVariables["SNEditPos1"];
             pos2 = (Point3D)actor.SessionVariables["SNEditPos2"];
 
             if (pos1 == null)
             {
-                Server.ChatManager.SendMessage("Position 1 is not set.", actor);
+                Server.ChatManager.SendActorMessage("Position 1 is not set.", actor);
                 return false;
             }
             else if (pos2 == null)
             {
-                Server.ChatManager.SendMessage("Position 2 is not set.", actor);
+                Server.ChatManager.SendActorMessage("Position 2 is not set.", actor);
                 return false;
             }
             else if (pos2 != null && pos1 != null)
@@ -70,7 +90,7 @@ namespace MoreBlocksScripts
             }
             else
             {
-                Server.ChatManager.SendMessage("Position 1 and Position 2 are not set.", actor);
+                Server.ChatManager.SendActorMessage("Position 1 and Position 2 are not set.", actor);
                 return false;
             }
         }

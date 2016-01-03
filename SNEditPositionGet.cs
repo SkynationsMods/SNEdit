@@ -1,16 +1,14 @@
 ﻿using SharedGameData;
 using SNScript;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PreciseMaths;
+
 namespace ScriptsExample
 {
     class SNEditPositionGet : GameCommand
     {
+        MoreBlocksScripts.SNEdit helper = new MoreBlocksScripts.SNEdit();
+
         public override string[] Aliases
         {
             get { return new string[] { "//pos" }; }
@@ -28,7 +26,7 @@ namespace ScriptsExample
         {
             get { return Priviledges.Player; }
         }
-
+        
         public SNEditPositionGet(IGameServer server)
             : base(server)
         {
@@ -42,16 +40,15 @@ namespace ScriptsExample
             try
             {
                 _ID = Int32.Parse(parameters[1]);
-            }
-            catch (FormatException e)
+            } catch(FormatException e)
             {
                 Server.ChatManager.SendActorMessage("Parameter could not be parsed.", actor);
                 return false;
             }
-
-            if (2 < _ID || _ID < 0)
+            
+            if(2 < _ID || _ID < 0)
             {
-                Server.ChatManager.SendActorMessage("Use parameter 1 or 2. You used: " + _ID, actor);
+                Server.ChatManager.SendActorMessage("Use parameter 1 or 2. You used: " + _ID , actor);
                 return false;
             }
             //Get systems
@@ -76,7 +73,7 @@ namespace ScriptsExample
             Point3D actorPos = new Point3D((int)actor.LocalChunkTransform.X, (int)actor.LocalChunkTransform.Y, (int)actor.LocalChunkTransform.Z);
 
             //Convert local Point to Sector Point
-            Point3D globalPos = new Point3D((int)currentChunk.Position.X + actorPos.X - 32 / 2, (int)currentChunk.Position.Y + actorPos.Y - 32 / 2, (int)currentChunk.Position.Z + actorPos.Z - 32 / 2);
+            Point3D globalPos = new Point3D((int)currentChunk.Position.X + actorPos.X - 32 /2, (int)currentChunk.Position.Y + actorPos.Y - 32 /2, (int)currentChunk.Position.Z + actorPos.Z - 32/2);
 
             //Return the saved data for testing
             Point3D returnSave = new Point3D();
