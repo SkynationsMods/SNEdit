@@ -45,7 +45,7 @@ namespace MoreBlocksScripts
             return Dictionary;
         }
 
-        public IChunk getChunkFromGlobal(Point3D pos, IActor actor)
+        public IChunk getChunkObjFromGlobalPos(Point3D pos, IActor actor)
         {
             //Get the server
             Server = actor.State as IGameServer;

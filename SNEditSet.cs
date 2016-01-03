@@ -6,12 +6,14 @@ using System.Linq;
 using PreciseMaths;
 using GameServer.World.Chunks;
 using System.Collections.Generic;
+using MoreBlocksScripts;
 
 namespace MoreBlocksScripts
-{ 
+{
     class SNEditSet : GameCommand
     {
-        MoreBlocksScripts.SNEdit helper = new MoreBlocksScripts.SNEdit();
+
+        private SNEdit helper;
 
         public override string[] Aliases
         {
@@ -31,93 +33,98 @@ namespace MoreBlocksScripts
             get { return Priviledges.Player; }
         }
 
-        public SNEditSet(IGameServer server) : base(server)
-        {
+        public SNEditSet(IGameServer server)
+            : base(server)
+        {   //constructor
+            this.helper = new MoreBlocksScripts.SNEdit();
         }
 
         public override bool Use(IActor actor, string message, string[] parameters)
         {
             //ID of block to change to
             ushort blockID = new ushort();
-            
+
             //Only takes 2 arguments //set and blockID
-            if(parameters.Length > 2)
+            if (parameters.Length > 2)
             {
                 Server.ChatManager.SendActorMessage("Too many arguments.", actor);
                 return false;
             }
 
             //Check if entered blockID is valid TODO
-            if(true)
+            if (true)
             {
                 blockID = ushort.Parse(parameters[1]);
-            } else
+            }
+            else
             {
                 Server.ChatManager.SendActorMessage("Invalid block entered.", actor);
                 return false;
             }
 
-            //Varible Point3D
-            Point3D dynamic = new Point3D();
-
             //2 positions for what the user set
             Point3D pos1 = new Point3D();
             Point3D pos2 = new Point3D();
 
-            //List of blocks need to be plased
-            List<Point3D> locationList = new List<Point3D>();
-
             //Maybe add this into a class later?
-            if(!helper.checkPositions(actor, out pos1, out pos2))
+            if (!helper.checkPositions(actor, out pos1, out pos2))
             {
                 return false;
             }
 
-            //Get the difference between the two position
-            //dynamic = pos1 - pos2;
-            dynamic.X = pos1.X - pos2.X;
-            dynamic.Y = pos1.Y - pos2.Y;
-            dynamic.Z = pos1.Z - pos2.Z;
+            //List of blocks need to be placed
+            List<Point3D> locationList = new List<Point3D>();
+
+            int diffx = pos2.X - pos1.X;
+            int diffy = pos2.Y - pos1.Y;
+            int diffz = pos2.Z - pos1.Z;
+            int absdiffx = System.Math.Abs(diffx);
+            int absdiffy = System.Math.Abs(diffy);
+            int absdiffz = System.Math.Abs(diffz);
+            int valincx = new int();
+            int valincy = new int();
+            int valincz = new int();
+            if (absdiffx != 0) { valincx = diffx / absdiffx; } else { valincx = absdiffx; };
+            if (absdiffy != 0) { valincy = diffy / absdiffy; } else { valincy = absdiffy; };
+            if (absdiffz != 0) { valincz = diffz / absdiffz; } else { valincz = absdiffz; };
+
+            /* */
+            Point3D outdiff = new Point3D(diffx, diffy, diffz);
+            Server.ChatManager.SendActorMessage("diff: " + outdiff.ToString(), actor);
+            Server.ChatManager.SendActorMessage("pos1: " + pos1.ToString(), actor);
+            Server.ChatManager.SendActorMessage("pos2: " + pos2.ToString(), actor);
+            /* */
+            
+            IChunk  currentChunk = helper.getChunkObjFromGlobalPos(pos1, actor);
+            Point3D ChunkPos = helper.GetChunkKeyFromGlobalPos(pos1.ToDoubleVector3);
 
 
-            locationList.Add(pos1);
-            locationList.Add(pos2);
+            Server.ChatManager.SendActorMessage("ChunkPos: " + ChunkPos.ToString(), actor);
 
-            //Get every block on X
-            while(dynamic.X != 0)
+
+            for (int x = 0; x <= (absdiffx); x++)
             {
-                Point3D temp = new Point3D();
-                temp = pos1;
-                temp.X = pos1.X + dynamic.X;
-
-                //Get every block on Y
-                while(dynamic.Y != 0)
+                for (int y = 0; y <= (absdiffy); y++)
                 {
-                    temp.Y = dynamic.Y;
-
-                    //Get every block on Z
-                    while(dynamic.Z != 0)
+                    for (int z = 0; z <= (absdiffz); z++)
                     {
-                        temp.Z = dynamic.Z;
-                        locationList.Add(temp);
-
-                        //Get dynamic closer to 0
-                        if (dynamic.Z > 0) { dynamic.Z++; } else { dynamic.Z--; }
+                        currentChunk.ChangeBlock(blockID,
+                                                 (ChunkPos.X - pos1.X) + (x * (valincx)),
+                                                 (ChunkPos.Y - pos1.Y) + (y * (valincy)),
+                                                 (ChunkPos.Z - pos1.Z) + (z * (valincz))
+                                                );
+                            /*locationList.Add(new Point3D(
+                            (ChunkPos.X - pos1.X) + (x * (valincx)),
+                            (ChunkPos.Y - pos1.Y) + (y * (valincy)),
+                            (ChunkPos.Z - pos1.Z) + (z * (valincz))
+                            ));*/
                     }
-
-                    //Get dynamic closer to 0
-                    if (dynamic.Y > 0) { dynamic.Y++; } else { dynamic.Y--; }
                 }
-                //Get dynamic closer to 0
-                if (dynamic.X > 0) { dynamic.X++; } else { dynamic.X--; }
-
             }
 
-            //TODO
-            Chunk currentChunk = (Chunk)helper.getChunkFromGlobal(pos1, actor);
 
             //Change blocks
-            currentChunk.ChangeBlockBatch(locationList, blockID, true);
+            //currentChunk.ChangeBlockBatch(locationList, blockID, true);
 
             return true;
         }
