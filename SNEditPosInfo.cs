@@ -56,7 +56,7 @@ namespace MoreBlocksScripts
             
 
             //Align player with local chunk grid
-            Point3D actorPos = new Point3D((int)actor.LocalChunkTransform.X, (int)actor.LocalChunkTransform.Y, (int)actor.LocalChunkTransform.Z);
+            Point3D actorPos = new Point3D((int)Math.Round(actor.LocalChunkTransform.X), (int)Math.Round(actor.LocalChunkTransform.Y), (int)Math.Round(actor.LocalChunkTransform.Z));
             
             //Convert local Point to Sector Point
             Point3D globalPos = new Point3D((int)currentChunk.Position.X + actorPos.X, (int)currentChunk.Position.Y + actorPos.Y, (int)currentChunk.Position.Z + actorPos.Z);

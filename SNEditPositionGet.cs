@@ -27,7 +27,8 @@ namespace MoreBlocksScripts
             get { return Priviledges.Player; }
         }
 
-        public SNEditPositionGet(IGameServer server) : base(server)
+        public SNEditPositionGet(IGameServer server)
+            : base(server)
         {
         }
 
@@ -70,7 +71,7 @@ namespace MoreBlocksScripts
             IChunk currentChunk = currentSystem.ChunkCollection.First(item => item.ID == currentChunkID);
 
             //Allign player with local chunk grid
-            Point3D actorPos = new Point3D((int)Math.Floor(actor.LocalChunkTransform.X), (int)Math.Floor(actor.LocalChunkTransform.Y), (int)Math.Floor(actor.LocalChunkTransform.Z));
+            Point3D actorPos = new Point3D((int)Math.Round(actor.LocalChunkTransform.X), (int)Math.Round(actor.LocalChunkTransform.Y), (int)Math.Round(actor.LocalChunkTransform.Z));
 
             //Convert local Point to Sector Point
             Point3D globalPos = new Point3D((int)currentChunk.Position.X + actorPos.X, (int)currentChunk.Position.Y + actorPos.Y, (int)currentChunk.Position.Z + actorPos.Z);
@@ -105,7 +106,7 @@ namespace MoreBlocksScripts
             //Server.ChatManager.SendActorMessage("Actor Pos: X=" + actorPos.X.ToString() + " Y=" + actorPos.Y.ToString() + " Z=" + actorPos.Z.ToString(), actor);
             //Server.ChatManager.SendActorMessage("Chunk Pos: X=" + ((int)currentChunk.Position.X).ToString() + " Y=" + ((int)currentChunk.Position.Y).ToString() + " Z=" + ((int)currentChunk.Position.Z).ToString(), actor);
             //Return Saved Data
-            Server.ChatManager.SendActorMessage("Stored:" + returnSave.X.ToString() + " Y=" + returnSave.Y.ToString() + " Z=" + returnSave.Z.ToString(), actor);
+            Server.ChatManager.SendActorMessage("Stored:" + returnSave.ToString(), actor);
 
 
             //Command executed successfully 
