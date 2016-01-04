@@ -14,7 +14,7 @@ namespace MoreBlocksScripts
 {
     public class SNEdit
     {
-        //TODOD, need to refernece the game server properly...
+        //TODO, need to referece the game server properly...
         public static IGameServer Server;
 
         public SNEdit()

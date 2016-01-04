@@ -98,9 +98,14 @@ namespace MoreBlocksScripts
             IChunk  currentChunk = helper.getChunkObjFromGlobalPos(pos1, actor);
             Point3D ChunkPos = helper.GetChunkKeyFromGlobalPos(pos1.ToDoubleVector3);
 
+            int testx = pos1.X - ChunkPos.X;
+            int testy = pos1.Y - ChunkPos.Y;
+            int testz = pos1.Z - ChunkPos.Z;
+            Point3D testpos = new Point3D(testx, testy, testz);
 
-            Server.ChatManager.SendActorMessage("ChunkPos: " + ChunkPos.ToString(), actor);
-
+            Server.ChatManager.SendActorMessage("ChunkPos: "            + ChunkPos.ToString() , actor);
+            Server.ChatManager.SendActorMessage("Restored Actor Pos: "  + testpos.ToString()  , actor);
+            
 
             for (int x = 0; x <= (absdiffx); x++)
             {
@@ -109,9 +114,9 @@ namespace MoreBlocksScripts
                     for (int z = 0; z <= (absdiffz); z++)
                     {
                         currentChunk.ChangeBlock(blockID,
-                                                 (ChunkPos.X - pos1.X) + (x * (valincx)),
-                                                 (ChunkPos.Y - pos1.Y) + (y * (valincy)),
-                                                 (ChunkPos.Z - pos1.Z) + (z * (valincz))
+                                                 (pos1.X - ChunkPos.X) + (x * (valincx)),
+                                                 (pos1.Y - ChunkPos.Y) + (y * (valincy)),
+                                                 (pos1.Z - ChunkPos.Z) + (z * (valincz))
                                                 );
                             /*locationList.Add(new Point3D(
                             (ChunkPos.X - pos1.X) + (x * (valincx)),

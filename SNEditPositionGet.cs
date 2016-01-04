@@ -3,7 +3,7 @@ using SNScript;
 using System;
 using System.Linq;
 
-namespace ScriptsExample
+namespace MoreBlocksScripts
 {
     class SNEditPositionGet : GameCommand
     {
@@ -27,8 +27,7 @@ namespace ScriptsExample
             get { return Priviledges.Player; }
         }
 
-        public SNEditPositionGet(IGameServer server)
-            : base(server)
+        public SNEditPositionGet(IGameServer server) : base(server)
         {
         }
 
@@ -75,6 +74,8 @@ namespace ScriptsExample
 
             //Convert local Point to Sector Point
             Point3D globalPos = new Point3D((int)currentChunk.Position.X + actorPos.X, (int)currentChunk.Position.Y + actorPos.Y, (int)currentChunk.Position.Z + actorPos.Z);
+
+
 
             //Return the saved data for testing
             Point3D returnSave = new Point3D();
