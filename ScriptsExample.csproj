@@ -33,6 +33,9 @@
     <Reference Include="GameServer">
       <HintPath>..\..\..\..\..\..\GameServer.dll</HintPath>
     </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\..\..\..\..\..\Lidgren.Network.dll</HintPath>
+    </Reference>
     <Reference Include="PreciseMaths">
       <HintPath>..\..\..\..\..\..\PreciseMaths.dll</HintPath>
     </Reference>
