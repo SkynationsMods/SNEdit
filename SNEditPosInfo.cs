@@ -2,12 +2,12 @@
 using SNScript;
 using System;
 using System.Linq;
+using SNScriptUtils;
 
-namespace MoreBlocksScripts
+namespace SNEdit
 {
     class SNEditPosInfo : GameCommand
     {
-        MoreBlocksScripts.SNEdit helper = new MoreBlocksScripts.SNEdit();
         private IGameServer Server;
 
         public override string[] Aliases
@@ -61,8 +61,9 @@ namespace MoreBlocksScripts
             //Convert local Point to Sector Point
             Point3D globalPos = new Point3D((int)currentChunk.Position.X + actorPos.X, (int)currentChunk.Position.Y + actorPos.Y, (int)currentChunk.Position.Z + actorPos.Z);
             Point3D trueglobalPos = new Point3D((int)currentChunk.Position.X + actorPos.X - 32 / 2, (int)currentChunk.Position.Y + actorPos.Y - 32 / 2, (int)currentChunk.Position.Z + actorPos.Z - 32 / 2);
+            //to get a global pos you can do DoubleVector3.Transform(localPoint, Chunk.World) //Ben
 
-            IChunk currChunkByGlobalPos = helper.getChunkObjFromGlobalPos(globalPos, actor);
+            IChunk currChunkByGlobalPos = SNScriptUtils._Utils.getChunkObjFromFakeGlobalPos(globalPos, actor);
 
             //Return this to the player
             this.Server.ChatManager.SendActorMessage("----------------------------------------------", actor);

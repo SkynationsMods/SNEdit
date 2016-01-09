@@ -2,13 +2,12 @@
 using SNScript;
 using System;
 using System.Linq;
+using SNScriptUtils._Utils;
 
-namespace MoreBlocksScripts
+namespace SNEdit
 {
-    class SNEditPositionGet : GameCommand
+    class _GetPos : GameCommand
     {
-        MoreBlocksScripts.SNEdit helper = new MoreBlocksScripts.SNEdit();
-
         public override string[] Aliases
         {
             get { return new string[] { "//pos" }; }
@@ -27,10 +26,7 @@ namespace MoreBlocksScripts
             get { return Priviledges.Player; }
         }
 
-        public SNEditPositionGet(IGameServer server)
-            : base(server)
-        {
-        }
+        public _GetPos(IGameServer server) : base(server) {}
 
         public override bool Use(IActor actor, string message, string[] parameters)
         {
@@ -75,8 +71,6 @@ namespace MoreBlocksScripts
 
             //Convert local Point to Sector Point
             Point3D globalPos = new Point3D((int)currentChunk.Position.X + actorPos.X, (int)currentChunk.Position.Y + actorPos.Y, (int)currentChunk.Position.Z + actorPos.Z);
-
-
 
             //Return the saved data for testing
             Point3D returnSave = new Point3D();

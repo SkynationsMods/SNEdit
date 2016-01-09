@@ -6,15 +6,12 @@ using System.Linq;
 using PreciseMaths;
 using GameServer.World.Chunks;
 using System.Collections.Generic;
-using MoreBlocksScripts;
+using SNScriptUtils._Utils;
 
 namespace MoreBlocksScripts
 {
     class SNEditSet : GameCommand
     {
-
-        private SNEdit helper;
-
         public override string[] Aliases
         {
             get { return new string[] { "//set" }; }
@@ -33,11 +30,7 @@ namespace MoreBlocksScripts
             get { return Priviledges.Player; }
         }
 
-        public SNEditSet(IGameServer server)
-            : base(server)
-        {   //constructor
-            this.helper = new MoreBlocksScripts.SNEdit();
-        }
+        public SNEditSet(IGameServer server) : base(server){}
 
         public override bool Use(IActor actor, string message, string[] parameters)
         {
@@ -67,7 +60,7 @@ namespace MoreBlocksScripts
             Point3D pos2 = new Point3D();
 
             //Maybe add this into a class later?
-            if (!helper.checkPositions(actor, out pos1, out pos2))
+            if (!SNScriptUtils._Utils.checkPositions(actor, out pos1, out pos2))
             {
                 return false;
             }
@@ -94,18 +87,18 @@ namespace MoreBlocksScripts
             Server.ChatManager.SendActorMessage("pos1: " + pos1.ToString(), actor);
             Server.ChatManager.SendActorMessage("pos2: " + pos2.ToString(), actor);
             /* */
-            
-            IChunk  currentChunk = helper.getChunkObjFromGlobalPos(pos1, actor);
-            Point3D ChunkPos = helper.GetChunkKeyFromGlobalPos(pos1.ToDoubleVector3);
+
+            IChunk currentChunk = SNScriptUtils._Utils.getChunkObjFromFakeGlobalPos(pos1, actor);
+            Point3D ChunkPos = SNScriptUtils._Utils.GetChunkKeyFromFakeGlobalPos(pos1.ToDoubleVector3);
 
             int testx = pos1.X - ChunkPos.X;
             int testy = pos1.Y - ChunkPos.Y;
             int testz = pos1.Z - ChunkPos.Z;
             Point3D testpos = new Point3D(testx, testy, testz);
 
-            Server.ChatManager.SendActorMessage("ChunkPos: "            + ChunkPos.ToString() , actor);
-            Server.ChatManager.SendActorMessage("Restored Actor Pos: "  + testpos.ToString()  , actor);
-            
+            Server.ChatManager.SendActorMessage("ChunkPos: " + ChunkPos.ToString(), actor);
+            Server.ChatManager.SendActorMessage("Restored Actor Pos: " + testpos.ToString(), actor);
+
 
             for (int x = 0; x <= (absdiffx); x++)
             {
@@ -118,11 +111,11 @@ namespace MoreBlocksScripts
                                                  (pos1.Y - ChunkPos.Y) + (y * (valincy)),
                                                  (pos1.Z - ChunkPos.Z) + (z * (valincz))
                                                 );
-                            /*locationList.Add(new Point3D(
-                            (ChunkPos.X - pos1.X) + (x * (valincx)),
-                            (ChunkPos.Y - pos1.Y) + (y * (valincy)),
-                            (ChunkPos.Z - pos1.Z) + (z * (valincz))
-                            ));*/
+                        /*locationList.Add(new Point3D(
+                        (ChunkPos.X - pos1.X) + (x * (valincx)),
+                        (ChunkPos.Y - pos1.Y) + (y * (valincy)),
+                        (ChunkPos.Z - pos1.Z) + (z * (valincz))
+                        ));*/
                     }
                 }
             }
