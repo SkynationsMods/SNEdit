@@ -6,9 +6,9 @@ using System.Linq;
 using PreciseMaths;
 using GameServer.World.Chunks;
 using System.Collections.Generic;
-using SNScriptUtils._Utils;
+using SNScriptUtils;
 
-namespace MoreBlocksScripts
+namespace SNEdit
 {
     class SNEditSet : GameCommand
     {
@@ -88,7 +88,8 @@ namespace MoreBlocksScripts
             Server.ChatManager.SendActorMessage("pos2: " + pos2.ToString(), actor);
             /* */
 
-            IChunk currentChunk = SNScriptUtils._Utils.getChunkObjFromFakeGlobalPos(pos1, actor);
+            IChunk currentChunk = new Object() as IChunk;
+            SNScriptUtils._Utils.getChunkObjFromFakeGlobalPos(pos1, actor, out currentChunk);
             Point3D ChunkPos = SNScriptUtils._Utils.GetChunkKeyFromFakeGlobalPos(pos1.ToDoubleVector3);
 
             int testx = pos1.X - ChunkPos.X;

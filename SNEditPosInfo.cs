@@ -59,18 +59,19 @@ namespace SNEdit
             Point3D actorPos = new Point3D((int)Math.Round(actor.LocalChunkTransform.X), (int)Math.Round(actor.LocalChunkTransform.Y), (int)Math.Round(actor.LocalChunkTransform.Z));
             
             //Convert local Point to Sector Point
-            Point3D globalPos = new Point3D((int)currentChunk.Position.X + actorPos.X, (int)currentChunk.Position.Y + actorPos.Y, (int)currentChunk.Position.Z + actorPos.Z);
+            Point3D fakeglobalPos = new Point3D((int)currentChunk.Position.X + actorPos.X, (int)currentChunk.Position.Y + actorPos.Y, (int)currentChunk.Position.Z + actorPos.Z);
             Point3D trueglobalPos = new Point3D((int)currentChunk.Position.X + actorPos.X - 32 / 2, (int)currentChunk.Position.Y + actorPos.Y - 32 / 2, (int)currentChunk.Position.Z + actorPos.Z - 32 / 2);
             //to get a global pos you can do DoubleVector3.Transform(localPoint, Chunk.World) //Ben
 
-            IChunk currChunkByGlobalPos = SNScriptUtils._Utils.getChunkObjFromFakeGlobalPos(globalPos, actor);
+            IChunk currChunkByFakeGlobalPos = new Object() as IChunk;
+            SNScriptUtils._Utils.getChunkObjFromFakeGlobalPos(fakeglobalPos, currentSystem, out currChunkByFakeGlobalPos);
 
             //Return this to the player
             this.Server.ChatManager.SendActorMessage("----------------------------------------------", actor);
             this.Server.ChatManager.SendActorMessage("Actor Pos:"               + actorPos.ToString(), actor);
             this.Server.ChatManager.SendActorMessage("Chunk Base (conn.chunk):" + currentChunk.Position.ToString(), actor);
-            this.Server.ChatManager.SendActorMessage("Chunk Base(calc.by globPos):" + currChunkByGlobalPos.Position.ToString(), actor);
-            this.Server.ChatManager.SendActorMessage("Calculated global Pos: "  + globalPos.ToString(), actor);
+            this.Server.ChatManager.SendActorMessage("Chunk Base(calc.by FglobPos):" + currChunkByFakeGlobalPos.Position.ToString(), actor);
+            this.Server.ChatManager.SendActorMessage("Calculated global Pos: "  + fakeglobalPos.ToString(), actor);
             this.Server.ChatManager.SendActorMessage("calc. True global Pos: "  + trueglobalPos.ToString(), actor);
             this.Server.ChatManager.SendActorMessage("----------------------------------------------", actor);
 

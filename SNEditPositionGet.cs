@@ -2,11 +2,11 @@
 using SNScript;
 using System;
 using System.Linq;
-using SNScriptUtils._Utils;
+using SNScriptUtils;
 
 namespace SNEdit
 {
-    class _GetPos : GameCommand
+    class GetPos : GameCommand
     {
         public override string[] Aliases
         {
@@ -26,7 +26,7 @@ namespace SNEdit
             get { return Priviledges.Player; }
         }
 
-        public _GetPos(IGameServer server) : base(server) {}
+        public GetPos(IGameServer server) : base(server) {}
 
         public override bool Use(IActor actor, string message, string[] parameters)
         {
@@ -70,7 +70,7 @@ namespace SNEdit
             Point3D actorPos = new Point3D((int)Math.Round(actor.LocalChunkTransform.X), (int)Math.Round(actor.LocalChunkTransform.Y), (int)Math.Round(actor.LocalChunkTransform.Z));
 
             //Convert local Point to Sector Point
-            Point3D globalPos = new Point3D((int)currentChunk.Position.X + actorPos.X, (int)currentChunk.Position.Y + actorPos.Y, (int)currentChunk.Position.Z + actorPos.Z);
+            Point3D fakeglobalPos = new Point3D((int)currentChunk.Position.X + actorPos.X, (int)currentChunk.Position.Y + actorPos.Y - 1, (int)currentChunk.Position.Z + actorPos.Z);
 
             //Return the saved data for testing
             Point3D returnSave = new Point3D();
@@ -81,14 +81,14 @@ namespace SNEdit
                     //Push position to Player's Session storage for Pos1
                     if (actor.SessionVariables.ContainsKey("SNEditPos1"))
                         actor.SessionVariables.Remove("SNEditPos1");
-                    actor.SessionVariables.Add("SNEditPos1", (object)globalPos);
+                    actor.SessionVariables.Add("SNEditPos1", (object)fakeglobalPos);
                     returnSave = (Point3D)actor.SessionVariables["SNEditPos1"];
                     break;
                 case 2:
                     //Push position to Player's Session storage for Pos2
                     if (actor.SessionVariables.ContainsKey("SNEditPos2"))
                         actor.SessionVariables.Remove("SNEditPos2");
-                    actor.SessionVariables.Add("SNEditPos2", (object)globalPos);
+                    actor.SessionVariables.Add("SNEditPos2", (object)fakeglobalPos);
                     returnSave = (Point3D)actor.SessionVariables["SNEditPos2"];
                     break;
             }

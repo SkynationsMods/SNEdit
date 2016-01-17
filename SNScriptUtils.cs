@@ -26,7 +26,7 @@ namespace SNScriptUtils
         }
 
 
-        //Create a Dictionary of all the cunks with their cords
+        //Create a Dictionary of all the Chunk in a System with their root coords
         public static Dictionary<Point3D, IChunk> CreateChunkDictionary(IBiomeSystem currentSystem)
         {
             Dictionary<Point3D, IChunk> Dictionary = new Dictionary<Point3D, IChunk>();
@@ -40,24 +40,40 @@ namespace SNScriptUtils
             return Dictionary;
         }
 
-        public static IChunk getChunkObjFromFakeGlobalPos(Point3D fakeGlobalPos, IActor actor)
+        public static bool getChunkObjFromFakeGlobalPos(Point3D fakeGlobalPos, IActor actor, out IChunk Chunk)
         {
+            Chunk = new Object() as IChunk;
             //Get the server
             IGameServer Server = actor.State as IGameServer;
-
-            //Chunk ID
-            Point3D staticChunkKey = _Utils.GetChunkKeyFromFakeGlobalPos(fakeGlobalPos.ToDoubleVector3);
-
+            //Get SystemsCollection (All Systems on the Server)
             Dictionary<uint, IBiomeSystem> SystemsCollection = Server.Biomes.GetSystems();
-
+            //Get the system the actor is currently in (only reference to go by)
             IBiomeSystem currentSystem;
-
             SystemsCollection.TryGetValue(actor.InstanceID, out currentSystem);
 
-            //Dictionary of chunks
-            Dictionary<Point3D, IChunk> ChunkDictionary = _Utils.CreateChunkDictionary(currentSystem);
-            Chunk sourceChunk = (Chunk)ChunkDictionary[staticChunkKey];
-            return sourceChunk;
+            //call base function and return results
+            return _Utils.getChunkObjFromFakeGlobalPos(fakeGlobalPos, currentSystem, out Chunk);
+        }
+
+        public static bool getChunkObjFromFakeGlobalPos(Point3D fakeGlobalPos, IBiomeSystem System, out IChunk Chunk)
+        {
+            Chunk = new Object() as IChunk;
+            //Get ChunkDictionary
+            Dictionary<Point3D, IChunk> ChunkDictionary = _Utils.CreateChunkDictionary(System);
+
+            //call base function and return results
+            return _Utils.getChunkObjFromFakeGlobalPos(fakeGlobalPos, ChunkDictionary, out Chunk);
+        }
+
+        public static bool getChunkObjFromFakeGlobalPos(Point3D fakeGlobalPos, Dictionary<Point3D, IChunk> ChunkDictionary, out IChunk Chunk)
+        {
+            Chunk = new Object() as IChunk;
+            Point3D staticChunkKey = _Utils.GetChunkKeyFromFakeGlobalPos(fakeGlobalPos.ToDoubleVector3);
+
+            if (!ChunkDictionary.ContainsKey(staticChunkKey))
+                return false;
+            Chunk = ChunkDictionary[staticChunkKey];
+            return true;
         }
 
         //For commands to check if positions have been set
@@ -90,25 +106,70 @@ namespace SNScriptUtils
             }
         }
 
-        public static List<Object> FindSpecialBlocksAround(Point3D sourcePos, List<Point3D> offsetList, uint blockID, IChunk Chunk, IBiomeSystem System)
+        public static bool FindCustomSpecialBlocksAround(Point3D sourceLocalPos, IChunk Chunk, List<Point3D> offsetList, uint blockID, Dictionary<Point3D, IChunk> ChunkDictionary, out List<Object[,]> SpecialBlockList)
         {
-            List<Object> SpecialBlocksList = new List<Object>();
-            for (int i = 1; i < offsetList.Count() - 1; i++)
+            SpecialBlockList = new List<Object[,]>();
+            //Console.WriteLine("Before Loop, OffsetList.Count = " + offsetList.Count().ToString());
+            for (int i = 0; i <= offsetList.Count() - 1; i++)
             {
-                Object SpecialBlock = new Object();
-                if ((SpecialBlock = _Utils.FindSpecialBlockByOffSet(offsetList[i].X, offsetList[i].Y, offsetList[i].Z, blockID, Chunk, System)) != null)
-                    SpecialBlocksList.Add(SpecialBlock);
+                //Console.WriteLine("Inside Loop. " + i.ToString());
+                KeyValuePair<Point3D, IChunk> SpecialBlock = new KeyValuePair<Point3D, IChunk>();
+                if (_Utils.FindCustomSpecialBlockByOffSet(sourceLocalPos, offsetList[i].X, offsetList[i].Y, offsetList[i].Z, blockID, Chunk, ChunkDictionary, out SpecialBlock))
+                {
+                    //Console.WriteLine("Found a Teleporter, adding to list");
+                    SpecialBlockList.Add(new Object[,] { { SpecialBlock.Key, SpecialBlock.Value } });
+                    //Console.WriteLine("added to list: (count) =  " + SpecialBlockList.Count.ToString());
+                }
+                else
+                {
+                    //Console.WriteLine("Found No Teleporter at Offset (OUT)");
+                }
+                //Console.WriteLine("Last Line in Loop");
             }
-            return SpecialBlocksList;
+            //Console.WriteLine("Past Loop, SpecialBlockList Count: " + SpecialBlockList.Count.ToString());
+            if (SpecialBlockList.Count > 0)
+                return true;
+            else
+                return false;
         }
-        
-        public static Object FindSpecialBlockByOffSet(int xOffset, int yOffset, int zOffset, uint blockID, IChunk Chunk, IBiomeSystem System)
+
+        public static bool FindCustomSpecialBlockByOffSet(Point3D sourceLocalPos, int xOffset, int yOffset, int zOffset, uint blockID, IChunk Chunk, Dictionary<Point3D, IChunk> ChunkDictionary, out KeyValuePair<Point3D, IChunk> SpecialBlock)
         {
-            //WIP
-            return null;
+            //Console.WriteLine("Inside FindByOffset.");
+            SpecialBlock = new KeyValuePair<Point3D, IChunk>();
+            Point3D tmpFakeGlobalPos = new Point3D(
+                (int)Chunk.Position.X + sourceLocalPos.X + xOffset,
+                (int)Chunk.Position.Y + sourceLocalPos.Y + yOffset,
+                (int)Chunk.Position.Z + sourceLocalPos.Z + zOffset
+                );
+            Point3D staticChunkKey = _Utils.GetChunkKeyFromFakeGlobalPos(tmpFakeGlobalPos.ToDoubleVector3);
+            if (!ChunkDictionary.ContainsKey(staticChunkKey))
+                return false;
+            IChunk tmpChunk = ChunkDictionary[staticChunkKey];
+            Point3D tmpFakeLocalPos = new Point3D(
+                tmpFakeGlobalPos.X - (int)tmpChunk.Position.X,
+                tmpFakeGlobalPos.Y - (int)tmpChunk.Position.Y,
+                tmpFakeGlobalPos.Z - (int)tmpChunk.Position.Z
+                );
+            //Console.WriteLine("got fakelocalpos as " + tmpFakeLocalPos.ToString());
+            ushort targetBlockID = new ushort();
+            targetBlockID = tmpChunk.Blocks[tmpChunk.GetBlockIndex(tmpFakeLocalPos.X, tmpFakeLocalPos.Y, tmpFakeLocalPos.Z)];
+            //Console.WriteLine("got targetBlockID as  " + ((int)targetBlockID).ToString());
+            if ((targetBlockID) == (ushort)blockID)
+            {
+                //Console.WriteLine("Found Teleporter, returning as keyvaluepair");
+                SpecialBlock = new KeyValuePair<Point3D, IChunk>(tmpFakeLocalPos, tmpChunk);
+                return true;
+            }
+            else
+            {
+                //Console.WriteLine("Found No Teleporter at Offset, returning(IN)");
+                return false;
+            }
+
         }
-       
-        public static bool GetBlockIdAtPos(Dictionary<Point3D, IChunk> ChunkDictionary, Point3D fakeGlobalPos, out ushort blockID)
+
+        public static bool GetBlockIdAtFakeGlobalPos(Dictionary<Point3D, IChunk> ChunkDictionary, Point3D fakeGlobalPos, out ushort blockID)
         {
             blockID = (ushort)0;
             Point3D staticChunkKey = _Utils.GetChunkKeyFromFakeGlobalPos(fakeGlobalPos.ToDoubleVector3);
@@ -120,6 +181,24 @@ namespace SNScriptUtils
             IChunk chunk = ChunkDictionary[staticChunkKey];
             blockID = chunk.Blocks[chunk.GetBlockIndex(x1, y1, z1)];
             return true;
+        }
+
+        public static bool FakeGlobalPosToChunkAndLocalPos(Point3D fakeGlobalPos, Dictionary<Point3D, IChunk> ChunkDictionary, out IChunk Chunk, out Point3D localPos)
+        {
+            if (SNScriptUtils._Utils.getChunkObjFromFakeGlobalPos(fakeGlobalPos, ChunkDictionary, out Chunk))
+            {
+                localPos = new Point3D(
+                fakeGlobalPos.X - (int)Chunk.Position.X,
+                fakeGlobalPos.Y - (int)Chunk.Position.Y,
+                fakeGlobalPos.Z - (int)Chunk.Position.Z
+                );
+                return true;
+            }
+            else
+            {
+                localPos = new Point3D();
+                return false;
+            }
         }
 
     }
