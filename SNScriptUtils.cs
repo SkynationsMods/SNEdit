@@ -30,7 +30,7 @@ namespace SNScriptUtils
         public static Dictionary<Point3D, IChunk> CreateChunkDictionary(IBiomeSystem currentSystem)
         {
             Dictionary<Point3D, IChunk> Dictionary = new Dictionary<Point3D, IChunk>();
-            for (int i = 0; i < currentSystem.ChunkCollection.Count - 1; i++)
+            for (int i = 0; i < currentSystem.ChunkCollection.Count; i++)
             {
                 if (currentSystem.ChunkCollection[i].IsStaticChunk)
                 {
