@@ -71,6 +71,10 @@ namespace SNEdit
             if (rayCastResult) { Console.WriteLine("fakeGlobalPos : " + fakeGlobalPos.ToString()); }
             Console.WriteLine("--------------------------------------------------");
 
+            string[] iAmStupid = new string[2];
+            iAmStupid[1] = "1";
+
+            SNScriptUtils._Utils.positionSet(myActor, iAmStupid, fakeGlobalPos);
 
             Server.ChatManager.SendActorMessage("RayCast result is" + hitPoint.ToString(), myActor);
         }
