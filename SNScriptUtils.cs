@@ -203,14 +203,13 @@ namespace SNScriptUtils
 
         public static bool positionSet(IActor actor, string parameter, Point3D pointIn = new Point3D())
         {
-            Console.WriteLine("1");
             //Server reference
             IGameServer Server = actor.State as IGameServer;
-            Console.WriteLine(Server);
 
             //Store if user wants pos 1 or 2
             int _ID = new int();
 
+            //Try to parse from string to int
             try
             {
                 _ID = Int32.Parse(parameter);
@@ -221,14 +220,17 @@ namespace SNScriptUtils
                 return false;
             }
 
+            //Check if entered paramter is within range
             if (2 < _ID || _ID < 0)
             {
                 Server.ChatManager.SendActorMessage("Use parameter 1 or 2. You used: " + _ID, actor);
                 return false;
             }
 
+            //This is what is returned
             Point3D fakeglobalPos;
-            Console.WriteLine(_ID.ToString());
+
+            //Check if there is a point put in
             if (pointIn == null)
             {
                 //Get systems
@@ -295,6 +297,26 @@ namespace SNScriptUtils
 
 
             //Command executed successfully 
+            return true;
+        }
+
+        //Still to finish
+        public static bool positionStore(IActor actor, int _ID, Point3D pointToStore, bool overwrite)
+        {
+            string keyName = "SNEditPos" + _ID.ToString();
+            if (actor.SessionVariables.ContainsKey(keyName))
+            {
+                if(overwrite)
+                {
+                    actor.SessionVariables.Remove(keyName);
+                } else
+                {
+                    //Nothing was overwritten
+                    return false;
+                }
+            } 
+                
+            actor.SessionVariables.Add("SNEditPos1", (object)pointToStore);
             return true;
         }
 
