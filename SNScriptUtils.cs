@@ -16,6 +16,141 @@ namespace SNScriptUtils
     {
         public _Utils() { }
 
+        public static bool SplitFakeGlobalPosBlocklistIntoChunksAndLocalPos(Dictionary<Point3D, ushort> fakeGlobalPosAndBlockID, out Dictionary<Point3D, Dictionary<Point3D, ushort>> BlocksToBePlacedInSystem)
+        {
+            BlocksToBePlacedInSystem = new Dictionary<Point3D, Dictionary<Point3D, ushort>>();
+
+            foreach (KeyValuePair<Point3D, ushort> KVPfakeGlobalPosAndBlockID in fakeGlobalPosAndBlockID)
+            {
+                Point3D tmpChunkPos = _Utils.GetChunkKeyFromFakeGlobalPos(KVPfakeGlobalPosAndBlockID.Key.ToDoubleVector3);
+
+                //calculate localpos
+                int localx = KVPfakeGlobalPosAndBlockID.Key.X - tmpChunkPos.X;
+                int localy = KVPfakeGlobalPosAndBlockID.Key.Y - tmpChunkPos.Y;
+                int localz = KVPfakeGlobalPosAndBlockID.Key.Z - tmpChunkPos.Z;
+                Point3D localPos = new Point3D(localx, localy, localz);
+
+                if (BlocksToBePlacedInSystem.Keys.Contains(tmpChunkPos))
+                {
+                    BlocksToBePlacedInSystem[tmpChunkPos].Add(localPos, KVPfakeGlobalPosAndBlockID.Value);
+                }
+                else
+                {
+                    Dictionary<Point3D, ushort> localPosAndBlockID = new Dictionary<Point3D, ushort>();
+                    localPosAndBlockID.Add(localPos, KVPfakeGlobalPosAndBlockID.Value);
+                    BlocksToBePlacedInSystem.Add(tmpChunkPos, localPosAndBlockID);
+                }
+            }
+
+            return true;
+        }
+
+        public static void calcAbsDiffAndValinc(int pos1, int pos2, out int absdiff, out int valinc)
+        {
+            int diff = pos2 - pos1;
+            absdiff = System.Math.Abs(diff);
+            if (absdiff != 0) { valinc = diff / absdiff; } else { valinc = absdiff; };
+        }
+
+        //BlocksToBePlacedInSystem = ChunkPos -> [localpos, BlockID]
+        public static bool PlaceBlocksInSystem(Dictionary<Point3D, Dictionary<Point3D, ushort>> BlocksToBePlacedInSystem, IBiomeSystem System, bool replacemode, ushort replaceBlockID)
+        {
+            Dictionary<Point3D, IChunk> ChunkDictionary = SNScriptUtils._Utils.CreateChunkDictionary(System);
+
+            foreach (KeyValuePair<Point3D, Dictionary<Point3D, ushort>> BlockToBePlacedInChunk in BlocksToBePlacedInSystem)
+            {
+                bool chunkNeedsCleanup = false;
+                IChunk workChunk = null as IChunk;
+                if (ChunkDictionary.ContainsKey(BlockToBePlacedInChunk.Key))
+                {//Chunk exists already, just retrieve it from the ChunkDictionary
+                    workChunk = System.ChunkCollection.First(item => item.Position == BlockToBePlacedInChunk.Key.ToDoubleVector3);
+                }
+                else
+                {//The Chunk does not exist, it first has to be created
+                    Console.WriteLine("This function is not working properly until patch 0.99! [_Utils.PlaceBlocksInSystem()->if ContainsKey == false]");
+                    
+                    ushort[] tmpBlock = {(ushort)1};
+                    //System.CreateLand(tmpBlock, BlockToBePlacedInChunk.Key.ToDoubleVector3);
+                    workChunk = System.ChunkCollection.First(item => item.Position == BlockToBePlacedInChunk.Key.ToDoubleVector3);
+                    chunkNeedsCleanup = true;
+                }
+
+                List<Point3D> replacePoints = new List<Point3D>();
+                if (replacemode)
+                { 
+                    for ( int i = 0; i < workChunk.Blocks.Count(); i++)
+                    {
+                        if (replaceBlockID == workChunk.Blocks[i])
+                        {
+                            replacePoints.Add(_Utils.getLocalPosFromBlockIndex(i));
+                        }
+                    }
+                }
+
+
+                //Place all Blocks in the Chunk
+                foreach (KeyValuePair<Point3D, ushort> BlocksInChunk in BlockToBePlacedInChunk.Value)
+                {
+                    if (replacemode && replacePoints.Contains(BlocksInChunk.Key))
+                    {
+                        workChunk.ChangeBlock(BlocksInChunk.Value, BlocksInChunk.Key.X, BlocksInChunk.Key.Y, BlocksInChunk.Key.Z, true, true);
+                    }
+                    else
+                    {
+                        workChunk.ChangeBlock(BlocksInChunk.Value, BlocksInChunk.Key.X, BlocksInChunk.Key.Y, BlocksInChunk.Key.Z, true, true);
+                    }
+                }
+
+                if (chunkNeedsCleanup)
+                {
+                    ushort tmpBlockID = (ushort)1; //TODO: add tmpBlock
+                    ushort blockID;
+                    blockID = workChunk.Blocks[0];
+                    if (blockID == tmpBlockID)
+                    {
+                        workChunk.ChangeBlock((ushort)0, 0, 0, 0);
+                    }
+                }
+            }
+            return true;
+        }
+
+        public static Point3D getLocalPosFromBlockIndex(int index)
+        {
+            int x = new int();
+            int y = new int();
+            int z = new int();
+
+            _Utils.DecodeIndex(index, out x, out y, out z);
+
+            return new Point3D(x, y, z);
+        }
+
+
+        public static void DecodeIndex(int index, out int x, out int y, out int z)
+        {
+            x = index / (32 * 32);
+            index -= x * 32 * 32;
+
+            y = index / 32;
+            index -= y * 32;
+
+            z = index / 1;
+        }
+
+        public int GetBlockIndex(int x, int y, int z)
+        {
+            if (x >= 32 || x < 0)
+                throw new IndexOutOfRangeException();
+            if (y >= 32 || y < 0)
+                throw new IndexOutOfRangeException();
+            if (z >= 32 || z < 0)
+                throw new IndexOutOfRangeException();
+
+            return x * 32 * 32 + y * 32 + z;
+        }
+
+
         //Get location of chunk from a global pos
         public static Point3D GetChunkKeyFromFakeGlobalPos(DoubleVector3 pos)
         {
@@ -201,14 +336,46 @@ namespace SNScriptUtils
             }
         }
 
-        public static bool positionSet(IActor actor, string parameter, Point3D pointIn = new Point3D())
+        //returns fakeGlobalPos of Actor
+        public static Point3D GetActorPos(IActor actor, Point3D offset)
         {
             //Server reference
             IGameServer Server = actor.State as IGameServer;
+            //Get systems
+            var SystemsCollection = Server.Biomes.GetSystems();
+            //Get system player is in
+            uint currentSystemID = actor.InstanceID;
+            //Define currentSystems for TryGetValue
+            IBiomeSystem currentSystem;
+            //Find the currentSystem based on its ID
+            SystemsCollection.TryGetValue(currentSystemID, out currentSystem);
+            //Get the chunk's ID that the player is in
+            uint currentChunkID = actor.ConnectedChunk;
+            //Search current system for the chunk based on its ID
+            IChunk currentChunk = currentSystem.ChunkCollection.First(item => item.ID == currentChunkID);
+            //Align player with local Chunk grid
+            Point3D actorPos = new Point3D((int)Math.Round(actor.LocalChunkTransform.X), (int)Math.Round(actor.LocalChunkTransform.Y), (int)Math.Round(actor.LocalChunkTransform.Z));
+            //Convert local Point to Sector Point
+            Point3D fakeglobalPos = new Point3D((int)currentChunk.Position.X + actorPos.X + offset.X, (int)currentChunk.Position.Y + actorPos.Y + offset.Y, (int)currentChunk.Position.Z + actorPos.Z + offset.Z);
 
-            //Store if user wants pos 1 or 2
+            return fakeglobalPos;
+        }
+
+        public static bool setPos(IActor actor, string parameter)
+        {
+            Point3D offset = new Point3D(0, -1, 0);
+            Point3D fakeglobalPos = _Utils.GetActorPos(actor, offset);
+
+            return setPos(actor, parameter, fakeglobalPos);
+        }
+
+
+        public static bool setPos(IActor actor, string parameter, Point3D fakeGlobalPos)
+        {
+            //Server reference
+            IGameServer Server = actor.State as IGameServer;
+            //Store if user wants to set pos 1 or 2
             int _ID = new int();
-
             //Try to parse from string to int
             try
             {
@@ -216,7 +383,7 @@ namespace SNScriptUtils
             }
             catch (FormatException e)
             {
-                Server.ChatManager.SendActorMessage("Parameter could not be parsed.", actor);
+                Server.ChatManager.SendActorMessage("Use '1' or '2' as parameter.", actor);
                 return false;
             }
 
@@ -227,98 +394,55 @@ namespace SNScriptUtils
                 return false;
             }
 
-            //This is what is returned
-            Point3D fakeglobalPos;
-
-            //Check if there is a point put in
-            if (pointIn == null)
-            {
-                //Get systems
-                var SystemsCollection = Server.Biomes.GetSystems();
-
-                //Get system player is in
-                uint currentSystemID = actor.InstanceID;
-
-                //Define currentSystems for TryGetValue
-                IBiomeSystem currentSystem;
-
-                //Find the currentSystem based on its ID
-                SystemsCollection.TryGetValue(currentSystemID, out currentSystem);
-
-                //Get the chunk's ID that the player is in
-                uint currentChunkID = actor.ConnectedChunk;
-
-                //Search current system for the chunk based on its ID
-                IChunk currentChunk = currentSystem.ChunkCollection.First(item => item.ID == currentChunkID);
-
-                //Allign player with local chunk grid
-                Point3D actorPos = new Point3D((int)Math.Round(actor.LocalChunkTransform.X), (int)Math.Round(actor.LocalChunkTransform.Y), (int)Math.Round(actor.LocalChunkTransform.Z));
-
-                //Convert local Point to Sector Point
-                fakeglobalPos = new Point3D((int)currentChunk.Position.X + actorPos.X, (int)currentChunk.Position.Y + actorPos.Y - 1, (int)currentChunk.Position.Z + actorPos.Z);
-
-            } else
-            {
-                fakeglobalPos = pointIn;
-            }
-
-            Console.WriteLine("3");
-            //Return the saved data for testing
-            Point3D returnSave = new Point3D();
-
             switch (_ID)
             {
                 case 1:
                     //Push position to Player's Session storage for Pos1
-                    if (actor.SessionVariables.ContainsKey("SNEditPos1"))
-                        actor.SessionVariables.Remove("SNEditPos1");
-                    actor.SessionVariables.Add("SNEditPos1", (object)fakeglobalPos);
-                    returnSave = (Point3D)actor.SessionVariables["SNEditPos1"];
+                    _Utils.storeSessionVar(actor, "SNEditPos1", (object)fakeGlobalPos, true);
                     break;
                 case 2:
                     //Push position to Player's Session storage for Pos2
-                    if (actor.SessionVariables.ContainsKey("SNEditPos2"))
-                        actor.SessionVariables.Remove("SNEditPos2");
-                    actor.SessionVariables.Add("SNEditPos2", (object)fakeglobalPos);
-                    returnSave = (Point3D)actor.SessionVariables["SNEditPos2"];
+                    _Utils.storeSessionVar(actor, "SNEditPos2", (object)fakeGlobalPos, true);
                     break;
             }
 
-            Console.WriteLine("3");
-            //Return this to the player
-            Server.ChatManager.SendActorMessage("Pos" + _ID + " set.", actor);
-            //Testing only
-            //Server.ChatManager.SendActorMessage("Global Pos: X=" + globalPos.X.ToString() + " Y=" + globalPos.Y.ToString() + " Z=" + globalPos.Z.ToString(), actor);
-            //Server.ChatManager.SendActorMessage("Actor Pos: X=" + actorPos.X.ToString() + " Y=" + actorPos.Y.ToString() + " Z=" + actorPos.Z.ToString(), actor);
-            //Server.ChatManager.SendActorMessage("Chunk Pos: X=" + ((int)currentChunk.Position.X).ToString() + " Y=" + ((int)currentChunk.Position.Y).ToString() + " Z=" + ((int)currentChunk.Position.Z).ToString(), actor);
-            //Return Saved Data
-            Console.WriteLine("3");
-            Server.ChatManager.SendActorMessage("Stored:" + returnSave.ToString(), actor);
-
-
+            //Return message to the player
+            Server.ChatManager.SendActorMessage("Pos" + _ID + " set: " + fakeGlobalPos.ToString(), actor);
             //Command executed successfully 
             return true;
         }
 
-        //Still to finish
-        public static bool positionStore(IActor actor, int _ID, Point3D pointToStore, bool overwrite)
+        //simple helper function to store a variable
+        public static bool storeSessionVar(IActor actor, string varName, Object variable, bool overwrite)
         {
-            string keyName = "SNEditPos" + _ID.ToString();
-            if (actor.SessionVariables.ContainsKey(keyName))
+            if (actor.SessionVariables.ContainsKey(varName))
             {
-                if(overwrite)
+                if (overwrite)
                 {
-                    actor.SessionVariables.Remove(keyName);
-                } else
+                    actor.SessionVariables.Remove(varName);
+                    actor.SessionVariables.Add(varName, variable);
+                    return true;
+                }
+                else
                 {
-                    //Nothing was overwritten
                     return false;
                 }
-            } 
-                
-            actor.SessionVariables.Add("SNEditPos1", (object)pointToStore);
-            return true;
+            }
+            else
+            {
+                actor.SessionVariables.Add(varName, variable);
+                return false;
+            }
         }
 
+        public static Dictionary<string, uint> GetTranslationDictionary()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static ushort ConvertMCBlockID2SNBlockID(string MCBlockID, Dictionary<string, uint> translationDictionary)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

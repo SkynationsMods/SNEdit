@@ -17,7 +17,7 @@ namespace SNEdit
         {
             get
             {
-                return "A test command in ScriptsExample.";
+                return "Stores current players position as Pos 1 or Pos 2 for subsequent SNEdit commands.";
             }
         }
 
@@ -26,19 +26,19 @@ namespace SNEdit
             get { return Priviledges.Player; }
         }
 
-        public GetPos(IGameServer server) : base(server) {}
+        public GetPos(IGameServer server) : base(server) { }
 
         public override bool Use(IActor actor, string message, string[] parameters)
         {
-            if(parameters.Length > 2)
+            if (parameters.Length > 2)
             {
-                Server.ChatManager.SendActorMessage("No parameter enterd.", actor);
+                Server.ChatManager.SendActorMessage("No parameter entered.", actor);
                 return false;
-            } else
-            {
-                return SNScriptUtils._Utils.positionSet(actor, parameters[1]);
             }
-            
+            else
+            {
+                return SNScriptUtils._Utils.setPos(actor, parameters[1]);
+            }
         }
     }
 }
