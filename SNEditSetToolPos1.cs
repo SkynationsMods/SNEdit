@@ -1,4 +1,4 @@
-using SharedGameData.Items;
+﻿using SharedGameData.Items;
 using SNScript;
 using System;
 using System.Collections.Generic;

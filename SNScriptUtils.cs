@@ -7,7 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PreciseMaths;
-using GameServer;
+using System.Linq;
+using System.Xml.Linq;
+using System.Xml;
+
+using GameServer.World;
+using GameServer.World.Actors;
 using GameServer.World.Chunks;
 
 namespace SNScriptUtils
@@ -15,6 +20,64 @@ namespace SNScriptUtils
     public class _Utils
     {
         public _Utils() { }
+
+        public static bool UsableByNationMemberOnly(IActor actor, IChunk chunk)
+        {
+            Chunk castedChunk = chunk as Chunk;
+            string nationName = castedChunk.NationOwner;
+            return (!string.IsNullOrEmpty(nationName) && (actor.Nation != nationName));
+        }
+
+        public static bool schematicExists(string schematicName, IActor actor)
+        {
+            return true;
+        }
+
+        public static Point3D calcBottomLeftPointOfCuboid(Point3D pos1, Point3D pos2)
+        {
+            int x;int y;int z;
+
+            if (pos1.X <= pos2.X)
+                x = pos1.X;
+            else
+                x = pos2.X;
+
+            if (pos1.Y <= pos2.Y)
+                y = pos1.Y;
+            else
+                y = pos2.Y;
+
+            if (pos1.Z <= pos2.Z)
+                z = pos1.Z;
+            else
+                z = pos2.Z;
+
+            return new Point3D(x,y,z);
+        }
+
+        public static bool checkParameterCount(string[] parameters, int parameterCount, IActor actor)
+        {
+            if (parameters.Length > (parameterCount+1))
+            {
+                ((IGameServer)actor.State).ChatManager.SendActorMessage("Too many arguments for this command.", actor);
+                return false;
+            }
+            else
+                return true;
+        }
+        
+        public static bool blockTypeExists(IChunk chunk, ushort blockID, IActor actor)
+        {
+            if (chunk.GetTileData().Keys.Contains(blockID))
+            {
+                return true;
+            }
+            else
+            {
+                ((IGameServer)actor.State).ChatManager.SendActorMessage("Invalid Block ID, Blocktype not found.", actor);
+                return false;
+            }
+        }
 
         public static bool SplitFakeGlobalPosBlocklistIntoChunksAndLocalPos(Dictionary<Point3D, ushort> fakeGlobalPosAndBlockID, out Dictionary<Point3D, Dictionary<Point3D, ushort>> BlocksToBePlacedInSystem)
         {
@@ -49,11 +112,18 @@ namespace SNScriptUtils
         {
             int diff = pos2 - pos1;
             absdiff = System.Math.Abs(diff);
-            if (absdiff != 0) { valinc = diff / absdiff; } else { valinc = absdiff; };
+            if (absdiff != 0) 
+            { 
+                valinc = diff / absdiff; 
+            } 
+            else 
+            { 
+                valinc = absdiff; 
+            };
         }
 
         //BlocksToBePlacedInSystem = ChunkPos -> [localpos, BlockID]
-        public static bool PlaceBlocksInSystem(Dictionary<Point3D, Dictionary<Point3D, ushort>> BlocksToBePlacedInSystem, IBiomeSystem System, bool replacemode, ushort replaceBlockID)
+        public static bool PlaceBlocksInSystem(Dictionary<Point3D, Dictionary<Point3D, ushort>> BlocksToBePlacedInSystem, IBiomeSystem System, bool replacemode, ushort replaceThisBlockID)
         {
             Dictionary<Point3D, IChunk> ChunkDictionary = SNScriptUtils._Utils.CreateChunkDictionary(System);
 
@@ -66,11 +136,10 @@ namespace SNScriptUtils
                     workChunk = System.ChunkCollection.First(item => item.Position == BlockToBePlacedInChunk.Key.ToDoubleVector3);
                 }
                 else
-                {//The Chunk does not exist, it first has to be created
-                    Console.WriteLine("This function is not working properly until patch 0.99! [_Utils.PlaceBlocksInSystem()->if ContainsKey == false]");
-                    
-                    ushort[] tmpBlock = {(ushort)1};
-                    //System.CreateLand(tmpBlock, BlockToBePlacedInChunk.Key.ToDoubleVector3);
+                {//The Chunk does not exist, it has to be created first
+                    ushort[] tmpBlock = new ushort[32768];
+                    tmpBlock[0] = 3;
+                    System.CreateLandChunk(tmpBlock, BlockToBePlacedInChunk.Key.ToDoubleVector3);
                     workChunk = System.ChunkCollection.First(item => item.Position == BlockToBePlacedInChunk.Key.ToDoubleVector3);
                     chunkNeedsCleanup = true;
                 }
@@ -80,14 +149,13 @@ namespace SNScriptUtils
                 { 
                     for ( int i = 0; i < workChunk.Blocks.Count(); i++)
                     {
-                        if (replaceBlockID == workChunk.Blocks[i])
+                        if (replaceThisBlockID == workChunk.Blocks[i])
                         {
                             replacePoints.Add(_Utils.getLocalPosFromBlockIndex(i));
                         }
                     }
                 }
-
-
+                
                 //Place all Blocks in the Chunk
                 foreach (KeyValuePair<Point3D, ushort> BlocksInChunk in BlockToBePlacedInChunk.Value)
                 {
@@ -95,26 +163,28 @@ namespace SNScriptUtils
                     {
                         workChunk.ChangeBlock(BlocksInChunk.Value, BlocksInChunk.Key.X, BlocksInChunk.Key.Y, BlocksInChunk.Key.Z, true, true);
                     }
-                    else
+
+                    if (!replacemode)
                     {
                         workChunk.ChangeBlock(BlocksInChunk.Value, BlocksInChunk.Key.X, BlocksInChunk.Key.Y, BlocksInChunk.Key.Z, true, true);
                     }
                 }
-
+                
                 if (chunkNeedsCleanup)
                 {
-                    ushort tmpBlockID = (ushort)1; //TODO: add tmpBlock
+                    ushort tmpBlockID = 3; //TODO: add tmpBlock
                     ushort blockID;
                     blockID = workChunk.Blocks[0];
                     if (blockID == tmpBlockID)
                     {
-                        workChunk.ChangeBlock((ushort)0, 0, 0, 0);
+                        workChunk.ChangeBlock(0, 0, 0, 0, true, true);
                     }
                 }
             }
             return true;
         }
 
+        //translates the Chunk.Blocks[i] index into the Position of the Block i within the Chunk
         public static Point3D getLocalPosFromBlockIndex(int index)
         {
             int x = new int();
@@ -138,6 +208,7 @@ namespace SNScriptUtils
             z = index / 1;
         }
 
+        //translates a localposition into the index i of the Block within the Chunk (Chunk.Blocks[i])
         public int GetBlockIndex(int x, int y, int z)
         {
             if (x >= 32 || x < 0)
@@ -149,7 +220,6 @@ namespace SNScriptUtils
 
             return x * 32 * 32 + y * 32 + z;
         }
-
 
         //Get location of chunk from a global pos
         public static Point3D GetChunkKeyFromFakeGlobalPos(DoubleVector3 pos)
@@ -212,7 +282,7 @@ namespace SNScriptUtils
         }
 
         //For commands to check if positions have been set
-        public static bool checkPositions(IActor actor, out Point3D pos1, out Point3D pos2)
+        public static bool checkStoredPositions(IActor actor, out Point3D pos1, out Point3D pos2)
         {
             //Get the server
             IGameServer Server = actor.State as IGameServer;
@@ -431,18 +501,37 @@ namespace SNScriptUtils
             else
             {
                 actor.SessionVariables.Add(varName, variable);
-                return false;
+                return true;
             }
         }
 
-        public static Dictionary<string, uint> GetTranslationDictionary()
+        public static Dictionary<string, ushort> GetTranslationDictionary()
         {
-            throw new NotImplementedException();
+            XmlDocument xdoc = new XmlDocument();
+            xdoc.Load("Schematics/MCBlockID2SNBlockID.xml"); 
+
+            string xmlcontents = xdoc.InnerXml;
+            var xpathquery = "/ArrayOfBlockTranslations/BlockTranslation";
+            XmlNodeList BlockTranslationList = xdoc.DocumentElement.SelectNodes(xpathquery);
+
+            Dictionary<string, ushort> translationDictionary = new Dictionary<string, ushort>();
+
+            foreach (XmlNode BlockTranslation in BlockTranslationList)
+            {
+                translationDictionary.Add(
+                    BlockTranslation["MCBlockID"].InnerText,
+                    ushort.Parse((BlockTranslation["SNTileID"].InnerText)) 
+                    );
+            }
+
+            return translationDictionary;
         }
 
-        internal static ushort ConvertMCBlockID2SNBlockID(string MCBlockID, Dictionary<string, uint> translationDictionary)
+        internal static ushort ConvertMCBlockID2SNBlockID(string MCBlockID, Dictionary<string, ushort> translationDictionary)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Requested MCBlockID: " + MCBlockID);
+            ushort value = new ushort();
+            return translationDictionary.TryGetValue(MCBlockID, out value) ? value : translationDictionary["default"];
         }
     }
 }
