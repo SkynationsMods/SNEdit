@@ -70,7 +70,7 @@ namespace SNEdit
 
                 Dictionary<Point3D, ushort> fakeGlobalPosAndBlockID = new Dictionary<Point3D, ushort>();
 
-                Point3D pos1 = SNScriptUtils._Utils.GetActorPos(actor, new Point3D(0, -1, 0));
+                Point3D pos1 = SNScriptUtils._Utils.GetActorFakeGlobalPos(actor, new Point3D(0, -1, 0));
 
                 //TODO: rotation! v--
                 int valincx = 1; int valincy = 1; int valincz = 1;

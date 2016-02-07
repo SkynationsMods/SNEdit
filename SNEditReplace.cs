@@ -36,11 +36,25 @@ namespace SNEdit
 
         public override bool Use(IActor actor, string message, string[] parameters)
         {//TODO: replace with 1 parameter -> replaceThisBlockID everything except 0
+            ushort replaceThisBlockID = new ushort();
+            ushort newBlockID = new ushort();
+
+            if (parameters.Length == 3)
+            {
+                replaceThisBlockID   = ushort.Parse(parameters[1]);
+                newBlockID           = ushort.Parse(parameters[2]);
+            }
+            /*
+            if (parameters.Length == 2)
+            {
+                replaceThisBlockID = ushort.Parse(parameters[1]);
+                newBlockID = ushort.Parse(parameters[2]);
+            }
+            */
             if (!_Utils.checkParameterCount(parameters, 2, actor))
                 return false;
 
-            ushort replaceThisBlockID   = ushort.Parse(parameters[1]);
-            ushort newBlockID           = ushort.Parse(parameters[2]);
+            
 
             IBiomeSystem checkSystem = Server.Biomes.GetSystems()[actor.InstanceID];
             IChunk checkChunk = checkSystem.ChunkCollection[0];

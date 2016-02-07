@@ -21,6 +21,19 @@ namespace SNScriptUtils
     {
         public _Utils() { }
 
+        public static byte[] applyRotationToMCArray(byte[] blockData, byte[] metaData, int rotate)
+        {
+            for (int i = 0; i < blockData.Length - 1; i++)
+            {
+
+
+
+            }
+
+            return metaData;
+        }
+
+        //only works on ships (not on land)
         public static bool UsableByNationMemberOnly(IActor actor, IChunk chunk)
         {
             Chunk castedChunk = chunk as Chunk;
@@ -28,6 +41,7 @@ namespace SNScriptUtils
             return (!string.IsNullOrEmpty(nationName) && (actor.Nation != nationName));
         }
 
+        //potential file check for safety
         public static bool schematicExists(string schematicName, IActor actor)
         {
             return true;
@@ -138,7 +152,7 @@ namespace SNScriptUtils
                 else
                 {//The Chunk does not exist, it has to be created first
                     ushort[] tmpBlock = new ushort[32768];
-                    tmpBlock[0] = 3;
+                    tmpBlock[0] = 4;
                     System.CreateLandChunk(tmpBlock, BlockToBePlacedInChunk.Key.ToDoubleVector3);
                     workChunk = System.ChunkCollection.First(item => item.Position == BlockToBePlacedInChunk.Key.ToDoubleVector3);
                     chunkNeedsCleanup = true;
@@ -172,7 +186,7 @@ namespace SNScriptUtils
                 
                 if (chunkNeedsCleanup)
                 {
-                    ushort tmpBlockID = 3; //TODO: add tmpBlock
+                    ushort tmpBlockID = 4;
                     ushort blockID;
                     blockID = workChunk.Blocks[0];
                     if (blockID == tmpBlockID)
@@ -407,7 +421,7 @@ namespace SNScriptUtils
         }
 
         //returns fakeGlobalPos of Actor
-        public static Point3D GetActorPos(IActor actor, Point3D offset)
+        public static Point3D GetActorFakeGlobalPos(IActor actor, Point3D offset)
         {
             //Server reference
             IGameServer Server = actor.State as IGameServer;
@@ -434,7 +448,7 @@ namespace SNScriptUtils
         public static bool setPos(IActor actor, string parameter)
         {
             Point3D offset = new Point3D(0, -1, 0);
-            Point3D fakeglobalPos = _Utils.GetActorPos(actor, offset);
+            Point3D fakeglobalPos = _Utils.GetActorFakeGlobalPos(actor, offset);
 
             return setPos(actor, parameter, fakeglobalPos);
         }
