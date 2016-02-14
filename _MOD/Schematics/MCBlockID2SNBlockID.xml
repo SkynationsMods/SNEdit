@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBlockTranslations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<BlockTranslation>
+		<MCBlockID>default</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>0:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>4:0</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<!--vv Wood Plank Variants vv-->
+	<BlockTranslation>
+		<MCBlockID>5:0</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>5:1</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>5:2</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>5:3</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>5:4</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>5:5</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	<!--^^ Wood Plank Variants ^^-->
+	
+	<BlockTranslation>
+		<MCBlockID>17:0</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:1</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:2</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:3</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:4</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:5</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:0</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:1</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:2</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:3</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:4</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:5</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:6</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:7</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:8</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:9</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:10</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:11</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:12</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:13</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:14</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:15</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>31:1</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	<!-- Slabs -->
+	<BlockTranslation>
+		<MCBlockID>44:0</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:1</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:2</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:3</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:4</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:5</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:6</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:7</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:8</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+
+	<!-- Oak Wood Stairs -->
+	<BlockTranslation>
+		<MCBlockID>53:0</MCBlockID>
+		<SNTileID>182</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:1</MCBlockID>
+		<SNTileID>181</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:2</MCBlockID>
+		<SNTileID>179</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:3</MCBlockID>
+		<SNTileID>180</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:4</MCBlockID>
+		<SNTileID>186</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:5</MCBlockID>
+		<SNTileID>185</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:6</MCBlockID>
+		<SNTileID>183</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:7</MCBlockID>
+		<SNTileID>184</SNTileID>
+	</BlockTranslation>
+	<!--^^ Oak Wood Stairs ^^-->
+	
+	<!--vv Cobblestone Stairs vv-->
+	<BlockTranslation>
+		<MCBlockID>67:0</MCBlockID>
+		<SNTileID>230</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>67:1</MCBlockID>
+		<SNTileID>229</SNTileID>
+	</BlockTranslation> 
+
+	<BlockTranslation>
+		<MCBlockID>67:2</MCBlockID>
+		<SNTileID>227</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>67:3</MCBlockID>
+		<SNTileID>228</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>67:4</MCBlockID>
+		<SNTileID>234</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>67:5</MCBlockID>
+		<SNTileID>233</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>67:6</MCBlockID>
+		<SNTileID>231</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>67:7</MCBlockID>
+		<SNTileID>232</SNTileID>	
+	</BlockTranslation>
+	<!--^^ Cobblestone Stairs ^^-->
+	
+	
+	<BlockTranslation>
+		<MCBlockID>85:0</MCBlockID>
+		<SNTileID>250</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>98:0</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>102:0</MCBlockID>
+		<SNTileID>8</SNTileID>
+	</BlockTranslation>
+	
+	<!--vv  Stone Brick Stairs vv-->
+	<BlockTranslation>
+		<MCBlockID>109:0</MCBlockID>
+		<SNTileID>230</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>109:1</MCBlockID>
+		<SNTileID>229</SNTileID>
+	</BlockTranslation> 
+
+	<BlockTranslation>
+		<MCBlockID>109:2</MCBlockID>
+		<SNTileID>227</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>109:3</MCBlockID>
+		<SNTileID>228</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>109:4</MCBlockID>
+		<SNTileID>234</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>109:5</MCBlockID>
+		<SNTileID>233</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>109:6</MCBlockID>
+		<SNTileID>231</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>109:7</MCBlockID>
+		<SNTileID>232</SNTileID>	
+	</BlockTranslation>
+	<!--^^ Stone Brick Stairs ^^-->
+	
+	
+	<!--vv Wooden Step Variants vv-->
+	<BlockTranslation>
+		<MCBlockID>126:0</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:1</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:2</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:3</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:4</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:5</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	<!--^^ Wooden Step Variants ^^-->
+	
+	<BlockTranslation>
+		<MCBlockID>164:0</MCBlockID>
+		<SNTileID>182</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:1</MCBlockID>
+		<SNTileID>181</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:2</MCBlockID>
+		<SNTileID>179</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:3</MCBlockID>
+		<SNTileID>180</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:4</MCBlockID>
+		<SNTileID>186</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:5</MCBlockID>
+		<SNTileID>185</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:6</MCBlockID>
+		<SNTileID>183</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:7</MCBlockID>
+		<SNTileID>184</SNTileID>
+	</BlockTranslation>
+	
+</ArrayOfBlockTranslations>

@@ -38,13 +38,15 @@ namespace SNEdit
         {
             try
             {
-                if (!actor.SessionVariables.ContainsKey("SNEditSchematicBuffer"))
+                bool debug = true;
+
+                if (!actor.SessionVariables.ContainsKey("SNEditSchematicClipboard"))
                 {
                     Server.ChatManager.SendActorMessage("Nothing found to paste. Use //load or //copy first.", actor);
                     return false;
                 }
 
-                Dictionary<string, string> loadInfo = (Dictionary<string, string>)actor.SessionVariables["SNEditSchematicBuffer"];
+                Dictionary<string, string> loadInfo = (Dictionary<string, string>)actor.SessionVariables["SNEditSchematicClipboard"];
 
                 string schematicDir = "Schematics/";
 
@@ -72,11 +74,48 @@ namespace SNEdit
 
                 Point3D pos1 = SNScriptUtils._Utils.GetActorFakeGlobalPos(actor, new Point3D(0, -1, 0));
 
-                //TODO: rotation! v--
-                int valincx = 1; int valincy = 1; int valincz = 1;
-                int maxDimQ = SchematicHeight; int maxDimR = SchematicLength; int maxDimS = SchematicWidth;
-                //TODO: rotation! ^--
+                int rotate;
+                if (loadInfo.ContainsKey("rotation"))
+                {
+                    rotate = Int32.Parse(loadInfo["rotation"]);
+                }
+                else
+                {
+                    rotate = 0;
+                }
 
+                int valincq = 1; int valincr = 1; int valincs = 1;
+                int maxDimQ = SchematicHeight; int maxDimR = SchematicLength; int maxDimS = SchematicWidth;
+                
+                if (rotate == 1) //90 degrees clockwise
+                {
+                    valincq = 1; maxDimQ = SchematicHeight;
+
+                    valincr = 1; valincs = 1;
+                    maxDimR = SchematicLength; maxDimS = SchematicWidth;
+                    //call rotate MC or SN array
+                }
+
+                if (rotate == 2) //180 degrees
+                {
+                    valincq = 1; maxDimQ = SchematicHeight;
+
+                    valincr = 1; valincs = 1;
+                    maxDimR = SchematicLength; maxDimS = SchematicWidth;
+                    //call rotate MC or SN array
+                }
+
+                if (rotate == 3) //270 degrees clockwise
+                {
+                    valincq = 1; maxDimQ = SchematicHeight;
+
+                    valincr = 1; valincs = 1;
+                    maxDimR = SchematicLength; maxDimS = SchematicWidth;
+                    //call rotate MC or SN array
+                }
+
+                if (debug) _Utils.translationHelper(BlockArray, MetaDataArray, translationDictionary);
+                
                 int i = 0;
                 for (int q = 0; q < (maxDimQ); q++)
                 {
@@ -86,9 +125,9 @@ namespace SNEdit
                         {
                             fakeGlobalPosAndBlockID.Add(
                                 new Point3D(
-                                    (pos1.X + (s * valincx)),
-                                    (pos1.Y + (q * valincy)),
-                                    (pos1.Z + (r * valincz))
+                                    (pos1.X + (s * valincq)),
+                                    (pos1.Y + (q * valincr)),
+                                    (pos1.Z + (r * valincs))
                                     ),
                                 _Utils.ConvertMCBlockID2SNBlockID(BlockArray[i] + ":" + MetaDataArray[i], translationDictionary));
                             i++;

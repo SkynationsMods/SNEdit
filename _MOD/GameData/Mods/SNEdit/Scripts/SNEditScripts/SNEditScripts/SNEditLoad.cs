@@ -51,7 +51,7 @@ namespace SNEdit
                 if (!_Utils.schematicExists(schematicName, actor))
                     return false;
 
-                if (!_Utils.storeSessionVar(actor, "SNEditSchematicBuffer", (Object)loadInfo, true))
+                if (!_Utils.storeSessionVar(actor, "SNEditSchematicClipboard", (Object)loadInfo, true))
                     return false;
 
                 Server.ChatManager.SendActorMessage("Schematic has been loaded.", actor);

@@ -21,24 +21,35 @@ namespace SNScriptUtils
     {
         public _Utils() { }
 
-        public static byte[] applyRotationToMCArray(byte[] blockData, byte[] metaData, int rotate)
+        public static void translationHelper(byte[] BlockArray, byte[] MetaDataArray, Dictionary<string, ushort> translationDictionary)
         {
-            for (int i = 0; i < blockData.Length - 1; i++)
+
+            List<string> ReqIDs = new List<string>();
+            for (int i = 0; i < BlockArray.Length - 1; i++)
             {
-
-
-
+                ReqIDs.Add(BlockArray[i] + ":" + MetaDataArray[i]);
             }
 
-            return metaData;
+            List<string> distReqIDs = ReqIDs.Distinct().ToList();
+
+            string output = "";
+            string req = "";
+            ushort value = new ushort();
+            foreach (string ID in distReqIDs)
+            {
+                req = translationDictionary.TryGetValue(ID, out value) ? ID + "->" + value.ToString() + " | " : ID + "->(def)";
+                output = output + req;
+            }
+
+            Console.WriteLine(output + " - requests with (def) defaulted.");
+
         }
 
         //only works on ships (not on land)
         public static bool UsableByNationMemberOnly(IActor actor, IChunk chunk)
         {
             Chunk castedChunk = chunk as Chunk;
-            string nationName = castedChunk.NationOwner;
-            return (!string.IsNullOrEmpty(nationName) && (actor.Nation != nationName));
+            return (!string.IsNullOrEmpty(castedChunk.NationOwner) && (actor.Nation != castedChunk.NationOwner));
         }
 
         //potential file check for safety
@@ -543,7 +554,7 @@ namespace SNScriptUtils
 
         internal static ushort ConvertMCBlockID2SNBlockID(string MCBlockID, Dictionary<string, ushort> translationDictionary)
         {
-            Console.WriteLine("Requested MCBlockID: " + MCBlockID);
+            //Console.Write("Requested MCBlockID: " + MCBlockID + " ");
             ushort value = new ushort();
             return translationDictionary.TryGetValue(MCBlockID, out value) ? value : translationDictionary["default"];
         }

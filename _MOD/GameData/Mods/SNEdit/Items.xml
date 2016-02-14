@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBaseItemData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  
+<!-- Pos 1 Tool -->
+  <BaseItemData>
+    <ID>8000</ID>
+    <Name>SNEdit Pos 1</Name>
+    <Description>Using this item will trigger the script in Class tags!</Description>
+    <Use>None</Use>
+    <Class>SNEdit.PosATool</Class>
+    <Price>1</Price>    
+	<TextureFile>UI/Icons/Tools/Pick</TextureFile>
+  </BaseItemData>
+  
+</ArrayOfBaseItemData>
