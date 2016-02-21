@@ -20,7 +20,7 @@ namespace SNEdit
         {
             get
             {
-                return "Command to ...";
+                return "Command to save an Area as SN Schematic.";
             }
         }
 
@@ -37,6 +37,18 @@ namespace SNEdit
         public override bool Use(IActor actor, string message, string[] parameters)
         {
             //save area between pos1 and pos2 into schematic
+            if (!_Utils.checkParameterCount(parameters, 1, actor))
+                return false;
+
+            String schematicName = parameters[1];
+
+            Point3D pos1 = new Point3D(); Point3D pos2 = new Point3D();
+            if (!_Utils.checkStoredPositions(actor, out pos1, out pos2))
+                return false;
+
+            Point3D posOrigin = _Utils.calcCuboidOrigin(pos1, pos2);
+            
+
 
 
 

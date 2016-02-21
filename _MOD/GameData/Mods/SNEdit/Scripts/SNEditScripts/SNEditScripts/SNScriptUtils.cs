@@ -10,6 +10,8 @@ using PreciseMaths;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml;
+using fNbt;
+using SNEdit;
 
 using GameServer.World;
 using GameServer.World.Actors;
@@ -21,11 +23,214 @@ namespace SNScriptUtils
     {
         public _Utils() { }
 
+        //public static bool NbtFile2Schematic(NbtFile NbtFile, IBiomeSystem system, Point3D rootfakeGlobalPos, int rotation, out String message)
+        public static bool NbtFile2SchematicClass(NbtFile NbtFile, out String message, out Schematic schematic) 
+        {
+            message = "Schematic successfully pasted!";
+            String type = "MC";
+            int[] TileArray = null; byte[] MetaDataArray = null; byte[] BlockArray = null;
+            int SchematicHeight = new int(); int SchematicWidth = new int(); int SchematicLength = new int(); int BlockCount = new int();
+            schematic = null;
+
+            try {
+
+                NbtTag SNEditTag = NbtFile.RootTag["SNEdit"];
+                if (SNEditTag != null)
+                    type = "SN";
+
+                SchematicHeight = NbtFile.RootTag["Height"].IntValue;
+                SchematicWidth = NbtFile.RootTag["Width"].IntValue;
+                SchematicLength = NbtFile.RootTag["Length"].IntValue;
+                BlockCount = SchematicHeight * SchematicWidth * SchematicLength;
+
+                switch(type) {
+                    case("SN"):
+                        TileArray = NbtFile.RootTag["Tiles"].IntArrayValue;
+                        break;
+                    case("MC"):
+                        BlockArray = NbtFile.RootTag["Blocks"].ByteArrayValue;
+                        MetaDataArray = NbtFile.RootTag["Data"].ByteArrayValue;
+                        break;
+                }
+            } catch (Exception e){message = "Schematic File invalid.";return false;}
+            
+            Dictionary<string, ushort> translationDictionary = SNScriptUtils._Utils.GetTranslationDictionary();
+
+            ushort[] blocks = new ushort[BlockCount];
+
+            bool info = true;
+            if (info && (type == "MC")) _Utils.translationHelper(BlockArray, MetaDataArray, translationDictionary);
+
+            switch (type)
+            {
+                case("MC"):
+                    for (int i = 0; i < BlockCount; i++)
+                    {
+                        blocks[i] = _Utils.ConvertMCBlockID2SNBlockID(BlockArray[i] + ":" + MetaDataArray[i], translationDictionary);
+                    }
+                    break;
+                case("SN"):
+                    for (int i = 0; i < BlockCount; i++)
+                    {
+                        blocks[i] = (ushort)TileArray[i];
+                    }
+                    break;
+            } 
+            
+            schematic = new Schematic(SchematicHeight, SchematicLength, SchematicWidth, blocks);
+            return true;
+        }
+
+        public static bool SchematicToFakeGlobalPosAndBlockID(
+            Schematic schematic,
+            Point3D root, 
+            Int32 rotation,
+            out Dictionary<Point3D, ushort> FakeGlobalPosAndBlockID
+            )
+        {
+            FakeGlobalPosAndBlockID = new Dictionary<Point3D, ushort>();
+
+            if (rotation != 0)
+                schematic.blocks = RotateLib.applyRotationToSNArray(schematic.blocks, rotation);
+            
+            int valincx = 1; int valincz = 1;
+            string mode = "xz";
+            switch (rotation)
+            {
+                case (1):
+                    valincx = -1; valincz = 1;
+                    mode = "zx";
+                    break;
+                case (2):
+                    valincx = -1; valincz = -1;
+                    mode = "xz";
+                    break;
+                case (3):
+                    valincx = 1; valincz = -1;
+                    mode = "zx";
+                    break;
+            }
+
+            int i = 0;
+
+            if (mode == "xz")
+            {
+                for (int y = 0; y < (schematic.Height); y++)
+                {
+                    for (int z = 0; z < (schematic.Length); z++)
+                    {
+                        for (int x = 0; x < (schematic.Width); x++)
+                        {
+                            FakeGlobalPosAndBlockID.Add(
+                                new Point3D(
+                                    (root.X + (x * valincx)),
+                                    (root.Y + (y * 1)),
+                                    (root.Z + (z * valincz))
+                                    ),
+                                schematic.blocks[i]
+                            );
+                            i++;
+                        }
+                    }
+                }
+            }
+
+            if (mode == "zx")
+            {
+                for (int y = 0; y < (schematic.Height); y++)
+                {
+                    for (int x = 0; x < (schematic.Width); x++)
+                    {
+                        for (int z = 0; z < (schematic.Length); z++)
+                        {
+                            FakeGlobalPosAndBlockID.Add(
+                                new Point3D(
+                                    (root.X + (x * valincx)),
+                                    (root.Y + (y * 1)),
+                                    (root.Z + (z * valincz))
+                                    ),
+                                schematic.blocks[i]
+                            );
+                            i++;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public static String sanitizeString(String input)
+        {
+            var invalids = System.IO.Path.GetInvalidFileNameChars();
+            var sanitizedFileName = String.Join("-", input.Split(invalids, StringSplitOptions.RemoveEmptyEntries)).TrimEnd('.');
+
+            return sanitizedFileName;
+        }
+
+        public static Boolean storeAreaAsSchematic(IActor actor, String schematicName, Boolean overwriteFile)
+        {
+            Point3D fakeGlobalPos1 = new Point3D(); Point3D fakeGlobalPos2 = new Point3D();
+            if (!_Utils.checkStoredPositions(actor, out fakeGlobalPos1, out fakeGlobalPos2))
+                return false;
+
+            IBiomeSystem system = ((IGameServer)actor.State).Biomes.GetSystems()[actor.InstanceID];
+
+            _Utils.storeAreaAsSchematic(fakeGlobalPos1, fakeGlobalPos2, system, schematicName, overwriteFile, null);
+
+            return true;
+        }
+        
+        public static Boolean storeAreaAsSchematic(Point3D fakeGlobalPos1, Point3D fakeGlobalPos2, IBiomeSystem system, String schematicName, Boolean overwriteFile, IActor actorForNotifications)
+        {
+            Point3D posOrigin           = _Utils.calcCuboidOrigin(fakeGlobalPos1, fakeGlobalPos2);
+            Point3D cuboidDimensions    = _Utils.calcCuboidDimensions(fakeGlobalPos1, fakeGlobalPos2);
+            
+            String sanitizedFileName = _Utils.sanitizeString(schematicName);
+
+            Dictionary<Point3D, IChunk> chunkDictionary = CreateChunkDictionary(system);
+
+            int[] tileArray = new int[cuboidDimensions.X * cuboidDimensions.Y * cuboidDimensions.Z];
+           
+
+            ushort blockID;
+
+            int i = 0;
+            for (int y = 0; y < (cuboidDimensions.Y); y++)
+            {
+                for (int z = 0; z < (cuboidDimensions.Z); z++)
+                {
+                    for (int x = 0; x < (cuboidDimensions.X); x++)
+                    {
+                        GetBlockIdAtFakeGlobalPos(chunkDictionary, new Point3D(posOrigin.X + x, posOrigin.Y + y, posOrigin.Z + z), out blockID);
+                        tileArray[i] = blockID;
+                        i++;
+                    }
+                }
+            }
+
+            var schematic = new NbtCompound("tmpSchematic");
+            schematic.Add(new NbtString("SNEdit", "true"));
+            schematic.Add(new NbtInt("Height", cuboidDimensions.Y));
+            schematic.Add(new NbtInt("Length", cuboidDimensions.Z));
+            schematic.Add(new NbtInt("Width", cuboidDimensions.X));
+            schematic.Add(new NbtIntArray("Tiles", tileArray));
+            
+
+            var serverFile = new NbtFile(schematic);
+            serverFile.SaveToFile(SNEditSettings.SchematicDir + sanitizedFileName + ".schematic", NbtCompression.None);
+
+            return true;
+        }
+
+
+        //helper function listing the requested unique translations (MCID to SNID), their result and most importantly which ones defaulted (no entry found)
+        //helpful to expand the translation dictionary and figure out which ones are still missing for to paste schematic
         public static void translationHelper(byte[] BlockArray, byte[] MetaDataArray, Dictionary<string, ushort> translationDictionary)
         {
 
             List<string> ReqIDs = new List<string>();
-            for (int i = 0; i < BlockArray.Length - 1; i++)
+            for (int i = 0; i < BlockArray.Length; i++)
             {
                 ReqIDs.Add(BlockArray[i] + ":" + MetaDataArray[i]);
             }
@@ -37,7 +242,7 @@ namespace SNScriptUtils
             ushort value = new ushort();
             foreach (string ID in distReqIDs)
             {
-                req = translationDictionary.TryGetValue(ID, out value) ? ID + "->" + value.ToString() + " | " : ID + "->(def)";
+                req = translationDictionary.TryGetValue(ID, out value) ? ID + "->" + value.ToString() + " | " : ID + "->(def) | ";
                 output = output + req;
             }
 
@@ -58,7 +263,23 @@ namespace SNScriptUtils
             return true;
         }
 
-        public static Point3D calcBottomLeftPointOfCuboid(Point3D pos1, Point3D pos2)
+        //calculates the dimensions of the selected Area, needed for //save and //copy operations, directly written into Schematic (Width, Length, Height)
+        public static Point3D calcCuboidDimensions(Point3D pos1, Point3D pos2)
+        {
+            int diffx = pos2.X - pos1.X;
+            int absdiffx = System.Math.Abs(diffx);
+
+            int diffy = pos2.Y - pos1.Y;
+            int absdiffy = System.Math.Abs(diffy);
+
+            int diffz = pos2.Z - pos1.Z;
+            int absdiffz = System.Math.Abs(diffz);
+            
+            return new Point3D(absdiffx + 1, absdiffy + 1, absdiffz + 1);
+        }
+
+        //calculates the Point of Origin of a selected Area (cuboid), thats the bottom left point, or /ingame/ the point in the north-east of the selection
+        public static Point3D calcCuboidOrigin(Point3D pos1, Point3D pos2)
         {
             int x;int y;int z;
 
@@ -150,10 +371,13 @@ namespace SNScriptUtils
         //BlocksToBePlacedInSystem = ChunkPos -> [localpos, BlockID]
         public static bool PlaceBlocksInSystem(Dictionary<Point3D, Dictionary<Point3D, ushort>> BlocksToBePlacedInSystem, IBiomeSystem System, bool replacemode, ushort replaceThisBlockID)
         {
+            List<IChunk> newChunkList = new List<IChunk>();
+
             Dictionary<Point3D, IChunk> ChunkDictionary = SNScriptUtils._Utils.CreateChunkDictionary(System);
 
             foreach (KeyValuePair<Point3D, Dictionary<Point3D, ushort>> BlockToBePlacedInChunk in BlocksToBePlacedInSystem)
             {
+                
                 bool chunkNeedsCleanup = false;
                 IChunk workChunk = null as IChunk;
                 if (ChunkDictionary.ContainsKey(BlockToBePlacedInChunk.Key))
@@ -163,9 +387,10 @@ namespace SNScriptUtils
                 else
                 {//The Chunk does not exist, it has to be created first
                     ushort[] tmpBlock = new ushort[32768];
-                    tmpBlock[0] = 4;
+                    tmpBlock[32767] = 4;
                     System.CreateLandChunk(tmpBlock, BlockToBePlacedInChunk.Key.ToDoubleVector3);
                     workChunk = System.ChunkCollection.First(item => item.Position == BlockToBePlacedInChunk.Key.ToDoubleVector3);
+                    
                     chunkNeedsCleanup = true;
                 }
 
@@ -199,13 +424,16 @@ namespace SNScriptUtils
                 {
                     ushort tmpBlockID = 4;
                     ushort blockID;
-                    blockID = workChunk.Blocks[0];
+                    blockID = workChunk.Blocks[32767];
                     if (blockID == tmpBlockID)
                     {
-                        workChunk.ChangeBlock(0, 0, 0, 0, true, true);
+                        workChunk.ChangeBlock(0, 31, 31, 31, true, true);
                     }
+                    newChunkList.Add(workChunk);
                 }
+                
             }
+
             return true;
         }
 
@@ -234,6 +462,7 @@ namespace SNScriptUtils
         }
 
         //translates a localposition into the index i of the Block within the Chunk (Chunk.Blocks[i])
+        //when lookup is true, it retrieves the result from a precalculated dictionary, instead of manually performing the calculation
         public int GetBlockIndex(int x, int y, int z)
         {
             if (x >= 32 || x < 0)
@@ -339,24 +568,17 @@ namespace SNScriptUtils
         public static bool FindCustomSpecialBlocksAround(Point3D sourceLocalPos, IChunk Chunk, List<Point3D> offsetList, uint blockID, Dictionary<Point3D, IChunk> ChunkDictionary, out List<Object[,]> SpecialBlockList)
         {
             SpecialBlockList = new List<Object[,]>();
-            //Console.WriteLine("Before Loop, OffsetList.Count = " + offsetList.Count().ToString());
+            
             for (int i = 0; i <= offsetList.Count() - 1; i++)
             {
-                //Console.WriteLine("Inside Loop. " + i.ToString());
                 KeyValuePair<Point3D, IChunk> SpecialBlock = new KeyValuePair<Point3D, IChunk>();
                 if (_Utils.FindCustomSpecialBlockByOffSet(sourceLocalPos, offsetList[i].X, offsetList[i].Y, offsetList[i].Z, blockID, Chunk, ChunkDictionary, out SpecialBlock))
                 {
-                    //Console.WriteLine("Found a Teleporter, adding to list");
                     SpecialBlockList.Add(new Object[,] { { SpecialBlock.Key, SpecialBlock.Value } });
-                    //Console.WriteLine("added to list: (count) =  " + SpecialBlockList.Count.ToString());
                 }
-                else
-                {
-                    //Console.WriteLine("Found No Teleporter at Offset (OUT)");
-                }
-                //Console.WriteLine("Last Line in Loop");
+                
             }
-            //Console.WriteLine("Past Loop, SpecialBlockList Count: " + SpecialBlockList.Count.ToString());
+            
             if (SpecialBlockList.Count > 0)
                 return true;
             else
@@ -365,7 +587,6 @@ namespace SNScriptUtils
 
         public static bool FindCustomSpecialBlockByOffSet(Point3D sourceLocalPos, int xOffset, int yOffset, int zOffset, uint blockID, IChunk Chunk, Dictionary<Point3D, IChunk> ChunkDictionary, out KeyValuePair<Point3D, IChunk> SpecialBlock)
         {
-            //Console.WriteLine("Inside FindByOffset.");
             SpecialBlock = new KeyValuePair<Point3D, IChunk>();
             Point3D tmpFakeGlobalPos = new Point3D(
                 (int)Chunk.Position.X + sourceLocalPos.X + xOffset,
@@ -381,19 +602,17 @@ namespace SNScriptUtils
                 tmpFakeGlobalPos.Y - (int)tmpChunk.Position.Y,
                 tmpFakeGlobalPos.Z - (int)tmpChunk.Position.Z
                 );
-            //Console.WriteLine("got fakelocalpos as " + tmpFakeLocalPos.ToString());
+            
             ushort targetBlockID = new ushort();
             targetBlockID = tmpChunk.Blocks[tmpChunk.GetBlockIndex(tmpFakeLocalPos.X, tmpFakeLocalPos.Y, tmpFakeLocalPos.Z)];
-            //Console.WriteLine("got targetBlockID as  " + ((int)targetBlockID).ToString());
+            
             if ((targetBlockID) == (ushort)blockID)
             {
-                //Console.WriteLine("Found Teleporter, returning as keyvaluepair");
                 SpecialBlock = new KeyValuePair<Point3D, IChunk>(tmpFakeLocalPos, tmpChunk);
                 return true;
             }
             else
             {
-                //Console.WriteLine("Found No Teleporter at Offset, returning(IN)");
                 return false;
             }
 
@@ -415,7 +634,7 @@ namespace SNScriptUtils
 
         public static bool FakeGlobalPosToChunkAndLocalPos(Point3D fakeGlobalPos, Dictionary<Point3D, IChunk> ChunkDictionary, out IChunk Chunk, out Point3D localPos)
         {
-            if (SNScriptUtils._Utils.getChunkObjFromFakeGlobalPos(fakeGlobalPos, ChunkDictionary, out Chunk))
+            if (_Utils.getChunkObjFromFakeGlobalPos(fakeGlobalPos, ChunkDictionary, out Chunk))
             {
                 localPos = new Point3D(
                 fakeGlobalPos.X - (int)Chunk.Position.X,
@@ -533,7 +752,7 @@ namespace SNScriptUtils
         public static Dictionary<string, ushort> GetTranslationDictionary()
         {
             XmlDocument xdoc = new XmlDocument();
-            xdoc.Load("Schematics/MCBlockID2SNBlockID.xml"); 
+            xdoc.Load(SNEditSettings.SchematicDir + "MCBlockID2SNBlockID.xml"); 
 
             string xmlcontents = xdoc.InnerXml;
             var xpathquery = "/ArrayOfBlockTranslations/BlockTranslation";
@@ -554,9 +773,9 @@ namespace SNScriptUtils
 
         internal static ushort ConvertMCBlockID2SNBlockID(string MCBlockID, Dictionary<string, ushort> translationDictionary)
         {
-            //Console.Write("Requested MCBlockID: " + MCBlockID + " ");
             ushort value = new ushort();
             return translationDictionary.TryGetValue(MCBlockID, out value) ? value : translationDictionary["default"];
         }
+
     }
 }

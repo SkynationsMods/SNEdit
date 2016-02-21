@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SNScriptUtils;
 using fNbt;
+using System.IO;
 
 namespace SNEdit
 {
@@ -38,105 +39,44 @@ namespace SNEdit
         {
             try
             {
-                bool debug = true;
-
                 if (!actor.SessionVariables.ContainsKey("SNEditSchematicClipboard"))
                 {
-                    Server.ChatManager.SendActorMessage("Nothing found to paste. Use //load or //copy first.", actor);
+                    Server.ChatManager.SendActorMessage("Nothing found to paste. Use //load or //copy an area first.", actor);
                     return false;
                 }
 
                 Dictionary<string, string> loadInfo = (Dictionary<string, string>)actor.SessionVariables["SNEditSchematicClipboard"];
+              
+                var NbtFile = new NbtFile();
+                NbtFile.LoadFromFile(SNEditSettings.SchematicDir + loadInfo["schematicName"] + ".schematic");
 
-                string schematicDir = "Schematics/";
+                Server.ChatManager.SendActorMessage("Paste operation started, depending on the size of the Schematic and Server Hardware, " +
+                   "this can take up to 10 minutes! In that time, the Server might seem unresponsive or hanged up, but give it time to complete the operation!", actor);
 
-                var Schematic = new NbtFile();
-                Schematic.LoadFromFile(schematicDir + loadInfo["schematicName"] + ".schematic");
-                var myCompoundTag = Schematic.RootTag;
 
-                int SchematicHeight = Schematic.RootTag["Height"].IntValue;
-                int SchematicWidth = Schematic.RootTag["Width"].IntValue;
-                int SchematicLength = Schematic.RootTag["Length"].IntValue;
-
-                Console.WriteLine(
-                    "SchematicHeight: " + SchematicHeight.ToString() +
-                    " SchematicWidth: " + SchematicWidth.ToString() +
-                    " SchematicLength: " + SchematicLength.ToString()
-                    );
-                byte[] BlockArray = Schematic.RootTag["Blocks"].ByteArrayValue;
-                byte[] MetaDataArray = Schematic.RootTag["Data"].ByteArrayValue;
-
-                string testOutPut = BitConverter.ToString(BlockArray);
-
-                Dictionary<string, ushort> translationDictionary = SNScriptUtils._Utils.GetTranslationDictionary();
+                string playerNotification = "";
+                Schematic Schematic = null;
+                if (!_Utils.NbtFile2SchematicClass(NbtFile, out playerNotification, out Schematic))
+                {
+                    Server.ChatManager.SendActorMessage(playerNotification, actor);
+                    return false;
+                }
 
                 Dictionary<Point3D, ushort> fakeGlobalPosAndBlockID = new Dictionary<Point3D, ushort>();
-
-                Point3D pos1 = SNScriptUtils._Utils.GetActorFakeGlobalPos(actor, new Point3D(0, -1, 0));
-
+                
                 int rotate;
                 if (loadInfo.ContainsKey("rotation"))
-                {
                     rotate = Int32.Parse(loadInfo["rotation"]);
-                }
                 else
-                {
                     rotate = 0;
-                }
-
-                int valincq = 1; int valincr = 1; int valincs = 1;
-                int maxDimQ = SchematicHeight; int maxDimR = SchematicLength; int maxDimS = SchematicWidth;
                 
-                if (rotate == 1) //90 degrees clockwise
-                {
-                    valincq = 1; maxDimQ = SchematicHeight;
+                if(!_Utils.SchematicToFakeGlobalPosAndBlockID(Schematic, _Utils.GetActorFakeGlobalPos(actor, new Point3D(0, -1, 0)), rotate, out fakeGlobalPosAndBlockID))
+                    return false;
 
-                    valincr = 1; valincs = 1;
-                    maxDimR = SchematicLength; maxDimS = SchematicWidth;
-                    //call rotate MC or SN array
-                }
 
-                if (rotate == 2) //180 degrees
-                {
-                    valincq = 1; maxDimQ = SchematicHeight;
-
-                    valincr = 1; valincs = 1;
-                    maxDimR = SchematicLength; maxDimS = SchematicWidth;
-                    //call rotate MC or SN array
-                }
-
-                if (rotate == 3) //270 degrees clockwise
-                {
-                    valincq = 1; maxDimQ = SchematicHeight;
-
-                    valincr = 1; valincs = 1;
-                    maxDimR = SchematicLength; maxDimS = SchematicWidth;
-                    //call rotate MC or SN array
-                }
-
-                if (debug) _Utils.translationHelper(BlockArray, MetaDataArray, translationDictionary);
-                
-                int i = 0;
-                for (int q = 0; q < (maxDimQ); q++)
-                {
-                    for (int r = 0; r < (maxDimR); r++)
-                    {
-                        for (int s = 0; s < (maxDimS); s++)
-                        {
-                            fakeGlobalPosAndBlockID.Add(
-                                new Point3D(
-                                    (pos1.X + (s * valincq)),
-                                    (pos1.Y + (q * valincr)),
-                                    (pos1.Z + (r * valincs))
-                                    ),
-                                _Utils.ConvertMCBlockID2SNBlockID(BlockArray[i] + ":" + MetaDataArray[i], translationDictionary));
-                            i++;
-                        }
-                    }
-                }
 
                 Dictionary<Point3D, Dictionary<Point3D, ushort>> BlocksToBePlacedInSystem = new Dictionary<Point3D, Dictionary<Point3D, ushort>>();
-                SNScriptUtils._Utils.SplitFakeGlobalPosBlocklistIntoChunksAndLocalPos(fakeGlobalPosAndBlockID, out BlocksToBePlacedInSystem);
+                _Utils.SplitFakeGlobalPosBlocklistIntoChunksAndLocalPos(fakeGlobalPosAndBlockID, out BlocksToBePlacedInSystem);
 
                 return SNScriptUtils._Utils.PlaceBlocksInSystem(BlocksToBePlacedInSystem, ((IGameServer)actor.State).Biomes.GetSystems()[actor.InstanceID], false, (ushort)0);
 

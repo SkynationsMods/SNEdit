@@ -47,6 +47,7 @@ namespace SNEdit
                 Dictionary<string, string> loadInfo = new Dictionary<string, string>();
 
                 loadInfo["schematicName"] = schematicName;
+                loadInfo["rotation"] = "0";
 
                 if (!_Utils.schematicExists(schematicName, actor))
                     return false;

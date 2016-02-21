@@ -1,0 +1,1504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBlockTranslations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<BlockTranslation>
+		<MCBlockID>default</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>0:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!--vv Stone Variants vv-->
+	<BlockTranslation>
+		<MCBlockID>1:0</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>1:1</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>1:2</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>1:3</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>1:4</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>1:5</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>1:6</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	<!--^^ Stone Variants ^^-->
+	
+	<!-- Grass -->
+	<BlockTranslation>
+		<MCBlockID>2:0</MCBlockID>
+		<SNTileID>1</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Dirt -->
+	<BlockTranslation>
+		<MCBlockID>3:0</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Coarse Dirt -->
+	<BlockTranslation>
+		<MCBlockID>3:1</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Podzol -->
+	<BlockTranslation>
+		<MCBlockID>3:2</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Cobblestone -->
+	<BlockTranslation>
+		<MCBlockID>4:0</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<!--vv Wood Plank Variants vv-->
+	<BlockTranslation>
+		<MCBlockID>5:0</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>5:1</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>5:2</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>5:3</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>5:4</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>5:5</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	<!--^^ Wood Plank Variants ^^-->
+	
+	<!--vv Water To Ice vv-->
+	<BlockTranslation>
+		<MCBlockID>8:0</MCBlockID>
+		<SNTileID>48</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>8:1</MCBlockID>
+		<SNTileID>48</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>9:0</MCBlockID>
+		<SNTileID>48</SNTileID>
+	</BlockTranslation>
+	<!--^^ Water To Ice ^^-->
+	
+	<!-- Lava (flowing) -->
+	<BlockTranslation>
+		<MCBlockID>10:0</MCBlockID>
+		<SNTileID>14</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Lava -->
+	<BlockTranslation>
+		<MCBlockID>11:0</MCBlockID>
+		<SNTileID>14</SNTileID>
+	</BlockTranslation>
+	
+	<!-- regular Sand -->
+	<BlockTranslation>
+		<MCBlockID>12:0</MCBlockID>
+		<SNTileID>7</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Red Sand -->
+	<BlockTranslation>
+		<MCBlockID>12:1</MCBlockID>
+		<SNTileID>7</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Gravel -->
+	<BlockTranslation>
+		<MCBlockID>13:0</MCBlockID>
+		<SNTileID>7</SNTileID>
+	</BlockTranslation>
+	
+	<!--vv Logs vv-->
+	<BlockTranslation>
+		<MCBlockID>17:0</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:1</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:2</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:3</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:4</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:5</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:8</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	<!--^^ Logs ^^-->
+	
+	<!-- Leaves -->
+	<BlockTranslation>
+		<MCBlockID>18:0</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:1</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:2</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:3</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:4</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:5</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:6</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:7</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:8</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:9</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:10</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:11</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:12</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:13</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:14</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>18:15</MCBlockID>
+		<SNTileID>23</SNTileID>
+	</BlockTranslation>
+	<!--^^ Leaves ^^-->
+	
+	<BlockTranslation>
+		<MCBlockID>20:0</MCBlockID>
+		<SNTileID>8</SNTileID>
+	</BlockTranslation>
+	
+	<!--vv SandStone to Ancient Brick(Large Stone) vv-->
+	<BlockTranslation>
+		<MCBlockID>24:0</MCBlockID>
+		<SNTileID>56</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>24:1</MCBlockID>
+		<SNTileID>56</SNTileID>
+	</BlockTranslation>
+	<!--vv SandStone to Ancient Slab vv-->
+	<BlockTranslation>
+		<MCBlockID>24:2</MCBlockID>
+		<SNTileID>67</SNTileID>
+	</BlockTranslation>
+	<!--^^ SandStone ^^-->
+	
+	<!--vv Bed to Table vv-->
+	<BlockTranslation>
+		<MCBlockID>26:0</MCBlockID>
+		<SNTileID>260</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>26:8</MCBlockID>
+		<SNTileID>260</SNTileID>
+	</BlockTranslation>
+		
+	<!--^^ Bed ^^-->
+	
+	<!--vv Grass vv-->
+	<BlockTranslation>
+		<MCBlockID>31:1</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>31:2</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	<!--^^ Grass ^^-->
+	
+	<!-- Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:0</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Orange Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:1</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Magenta Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:2</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Light Blue Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:3</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Yellow Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:4</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Lime Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:5</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Pink Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:6</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Gray Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:7</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Light Gray Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:8</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Cyan Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:9</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Purple Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:10</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Blue Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:11</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Brown Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:12</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Green Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:13</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Red Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:14</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Black Wool -->
+	<BlockTranslation>
+		<MCBlockID>35:15</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!--vv Flowers vv-->
+	<BlockTranslation>
+		<MCBlockID>37:0</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>38:0</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>38:1</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>38:2</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>38:3</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>38:4</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>38:5</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>38:6</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>38:7</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>38:8</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	<!--^^ Flowers ^^-->
+	
+	<!--vv Double Slabs vv-->
+	<BlockTranslation> <!-- Stone Slab (Double) to Brick -->
+		<MCBlockID>43:0</MCBlockID>
+		<SNTileID>13</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation><!-- Sandstone Slab (Double) to Ancient Brick -->
+		<MCBlockID>43:1</MCBlockID>
+		<SNTileID>51</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation><!-- Wooden Slab (Double) to Plank Brick -->
+		<MCBlockID>43:2</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation><!-- Cobblestone Slab (Double) to Stone -->
+		<MCBlockID>43:3</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>43:4</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>43:5</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>43:6</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>43:7</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation><!-- Smooth Stone Slab to Ancient Slab -->
+		<MCBlockID>43:8</MCBlockID>
+		<SNTileID>67</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>43:9</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+	<!--^^ Double Slabs ^^-->
+	
+	
+	
+	<!--vv Stone Slabs (Lower) vv-->
+	<BlockTranslation>
+		<MCBlockID>44:0</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:1</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:2</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:3</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:4</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:5</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:6</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:7</MCBlockID>
+		<SNTileID>38</SNTileID>
+	</BlockTranslation>
+	<!--^^ Stone Slabs (Lower) ^^-->
+	
+	<!--vv Stone Slabs (Upper) vv-->
+	<BlockTranslation>
+		<MCBlockID>44:8</MCBlockID>
+		<SNTileID>7159</SNTileID>
+	</BlockTranslation>
+	<BlockTranslation>
+		<MCBlockID>44:9</MCBlockID>
+		<SNTileID>7159</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:10</MCBlockID>
+		<SNTileID>7159</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:11</MCBlockID>
+		<SNTileID>7159</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:12</MCBlockID>
+		<SNTileID>7159</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:13</MCBlockID>
+		<SNTileID>7159</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:14</MCBlockID>
+		<SNTileID>7159</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>44:15</MCBlockID>
+		<SNTileID>7159</SNTileID>
+	</BlockTranslation>
+	<!--^^ Stone Slabs (Upper) ^^-->
+	
+	<!-- Brick to Red Brick -->
+	<BlockTranslation>
+		<MCBlockID>45:0</MCBlockID>
+		<SNTileID>36</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Mossy Stone to regular Stone -->
+	<BlockTranslation>
+		<MCBlockID>48</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Obsidian to Black Granite-->
+	<BlockTranslation>
+		<MCBlockID>49</MCBlockID>
+		<SNTileID>57</SNTileID>
+	</BlockTranslation>
+
+	<!--vv Torch to Lamps vv-->
+	<BlockTranslation>
+		<MCBlockID>50:1</MCBlockID>
+		<SNTileID>22</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>50:2</MCBlockID>
+		<SNTileID>22</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>50:3</MCBlockID>
+		<SNTileID>22</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>50:4</MCBlockID>
+		<SNTileID>22</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>50:5</MCBlockID>
+		<SNTileID>22</SNTileID>
+	</BlockTranslation>
+	<!--^^ Torch ^^-->
+	
+	<!-- Fire to Air (no equivalent) -->
+	<BlockTranslation>
+		<MCBlockID>51:15</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Oak Wood Stairs -->
+	<BlockTranslation>
+		<MCBlockID>53:0</MCBlockID>
+		<SNTileID>182</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:1</MCBlockID>
+		<SNTileID>181</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:2</MCBlockID>
+		<SNTileID>179</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:3</MCBlockID>
+		<SNTileID>180</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:4</MCBlockID>
+		<SNTileID>186</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:5</MCBlockID>
+		<SNTileID>185</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:6</MCBlockID>
+		<SNTileID>183</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>53:7</MCBlockID>
+		<SNTileID>184</SNTileID>
+	</BlockTranslation>
+	<!--^^ Oak Wood Stairs ^^-->
+	
+	<!--vv Chest to Crate (rotations) vv-->
+	<BlockTranslation>
+		<MCBlockID>54:2</MCBlockID>
+		<SNTileID>20</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>54:3</MCBlockID>
+		<SNTileID>20</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>54:4</MCBlockID>
+		<SNTileID>20</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>54:5</MCBlockID>
+		<SNTileID>20</SNTileID>
+	</BlockTranslation>
+	<!--^^ Furnace ^^-->
+	
+	<!-- Workbench to Workbench -->
+	<BlockTranslation>
+		<MCBlockID>58:0</MCBlockID>
+		<SNTileID>16</SNTileID>
+	</BlockTranslation>
+	
+	<!--vv Furnace (rotations) vv-->
+	<BlockTranslation>
+		<MCBlockID>61:2</MCBlockID>
+		<SNTileID>14</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>61:3</MCBlockID>
+		<SNTileID>14</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>61:4</MCBlockID>
+		<SNTileID>14</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>61:5</MCBlockID>
+		<SNTileID>14</SNTileID>
+	</BlockTranslation>
+	<!--^^ Furnace ^^-->
+	
+	<!--vv Ladder vv-->
+	<BlockTranslation>
+		<MCBlockID>65:0</MCBlockID>
+		<SNTileID>27</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>65:1</MCBlockID>
+		<SNTileID>26</SNTileID>
+	</BlockTranslation> 
+
+	<BlockTranslation>
+		<MCBlockID>65:2</MCBlockID>
+		<SNTileID>24</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>65:3</MCBlockID>
+		<SNTileID>25</SNTileID>
+	</BlockTranslation>
+	<!--^^ Ladder ^^-->
+	
+	<!--vv Cobblestone Stairs vv-->
+	<BlockTranslation>
+		<MCBlockID>67:0</MCBlockID>
+		<SNTileID>230</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>67:1</MCBlockID>
+		<SNTileID>229</SNTileID>
+	</BlockTranslation> 
+
+	<BlockTranslation>
+		<MCBlockID>67:2</MCBlockID>
+		<SNTileID>227</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>67:3</MCBlockID>
+		<SNTileID>228</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>67:4</MCBlockID>
+		<SNTileID>234</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>67:5</MCBlockID>
+		<SNTileID>233</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>67:6</MCBlockID>
+		<SNTileID>231</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>67:7</MCBlockID>
+		<SNTileID>232</SNTileID>	
+	</BlockTranslation>
+	<!--^^ Cobblestone Stairs ^^-->
+	
+	<!--vv Sign to Air (no equivalent) vv-->
+	<BlockTranslation>
+		<MCBlockID>68:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>68:1</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation> 
+
+	<BlockTranslation>
+		<MCBlockID>68:2</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>68:3</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:4</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:5</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:6</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:7</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:8</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:9</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:10</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:11</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:12</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:13</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:14</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>68:15</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	<!--^^ Sign ^^-->
+	
+	<!--^^ Wooden Pressure Plate to Wood Decking ^^-->
+	<BlockTranslation>
+		<MCBlockID>72:0</MCBlockID>
+		<SNTileID>58</SNTileID>	
+	</BlockTranslation>
+	<!--^^ Wooden Pressure ^^-->
+	
+	<BlockTranslation>
+		<MCBlockID>85:0</MCBlockID>
+		<SNTileID>250</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Netherrack - Red Stone Brick -->
+	<BlockTranslation>
+		<MCBlockID>87:0</MCBlockID>
+		<SNTileID>36</SNTileID>	
+	</BlockTranslation>
+	
+	<!-- Glow Stone to Lantern -->
+	<BlockTranslation>
+		<MCBlockID>89:0</MCBlockID>
+		<SNTileID>22</SNTileID>	
+	</BlockTranslation>
+	
+	<!--vv Trapdoor to Wooden Hatch (rotations and attachments) vv-->
+	<BlockTranslation>
+		<MCBlockID>96:0</MCBlockID>
+		<SNTileID>7090</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>96:4</MCBlockID>
+		<SNTileID>7090</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>96:5</MCBlockID>
+		<SNTileID>7090</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>96:6</MCBlockID>
+		<SNTileID>7090</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>96:7</MCBlockID>
+		<SNTileID>7090</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>96:8</MCBlockID>
+		<SNTileID>7090</SNTileID>	
+	</BlockTranslation>
+	<!--^^ Trapdoor to Wooden Hatch ^^-->
+	
+	<!--vv Monster Egg (Stone) to Stone Bricks vv-->
+	<BlockTranslation>
+		<MCBlockID>97:0</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>97:1</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>97:2</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>97:3</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>97:4</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>97:5</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	<!--^^ Stone Bricks ^^-->
+	
+	<!--vv Stone Bricks to Stone Bricks vv-->
+	<BlockTranslation>
+		<MCBlockID>98:0</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>98:1</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>98:2</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>98:3</MCBlockID>
+		<SNTileID>18</SNTileID>
+	</BlockTranslation>
+	<!--^^ Stone Bricks ^^-->
+	
+	<!-- Iron Bar to Steel Railing -->
+	<BlockTranslation>
+		<MCBlockID>101:0</MCBlockID>
+		<SNTileID>248</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Glass Pane to full Glass Block -->
+	<BlockTranslation>
+		<MCBlockID>102:0</MCBlockID>
+		<SNTileID>8</SNTileID>
+	</BlockTranslation>
+	
+	<!--vv Fence Gate to Air (needs fix)vv-->
+	<BlockTranslation>
+		<MCBlockID>107:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>107:4</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>107:5</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>107:6</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>107:7</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	<!--^^ Fence Gate ^^-->
+	
+	<!--vv  Stone Brick Stairs vv-->
+	<BlockTranslation>
+		<MCBlockID>109:0</MCBlockID>
+		<SNTileID>230</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>109:1</MCBlockID>
+		<SNTileID>229</SNTileID>
+	</BlockTranslation> 
+
+	<BlockTranslation>
+		<MCBlockID>109:2</MCBlockID>
+		<SNTileID>227</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>109:3</MCBlockID>
+		<SNTileID>228</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>109:4</MCBlockID>
+		<SNTileID>234</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>109:5</MCBlockID>
+		<SNTileID>233</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>109:6</MCBlockID>
+		<SNTileID>231</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>109:7</MCBlockID>
+		<SNTileID>232</SNTileID>	
+	</BlockTranslation>
+	<!--^^ Stone Brick Stairs ^^-->
+	
+	<!-- Lily Pad to Grass -->
+	<BlockTranslation>
+		<MCBlockID>111:0</MCBlockID>
+		<SNTileID>46</SNTileID>	
+	</BlockTranslation>
+	
+	<!-- Cauldron to Air (no equivalent) -->
+	<BlockTranslation>
+		<MCBlockID>118:0</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<!--vv Wooden Double Slabs to Plank vv-->
+	<BlockTranslation>
+		<MCBlockID>125:0</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>125:1</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>125:2</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>125:3</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>125:4</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>125:5</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	<!--^^ Wooden Double Slabs ^^-->
+	
+	<!--vv Wooden Step Variants (Lower)vv-->
+	<BlockTranslation>
+		<MCBlockID>126:0</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:1</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:2</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:3</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:4</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:5</MCBlockID>
+		<SNTileID>31</SNTileID>
+	</BlockTranslation>
+	<!--^^ Wooden Step Variants (Lower)^^-->
+	
+	<!--vv Wooden Step Variants (Upper)vv-->
+	<BlockTranslation>
+		<MCBlockID>126:8</MCBlockID>
+		<SNTileID>7158</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:9</MCBlockID>
+		<SNTileID>7158</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:10</MCBlockID>
+		<SNTileID>7158</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:11</MCBlockID>
+		<SNTileID>7158</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:12</MCBlockID>
+		<SNTileID>7158</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>126:13</MCBlockID>
+		<SNTileID>7158</SNTileID>
+	</BlockTranslation>
+	<!--^^ Wooden Step Variants (Upper) ^^-->
+	
+	<!--vv Wooden Stairs Spruce to Wood Wedges vv -->
+	<BlockTranslation>
+		<MCBlockID>134:0</MCBlockID>
+		<SNTileID>182</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>134:1</MCBlockID>
+		<SNTileID>181</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>134:2</MCBlockID>
+		<SNTileID>179</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>134:3</MCBlockID>
+		<SNTileID>180</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>134:4</MCBlockID>
+		<SNTileID>186</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>134:5</MCBlockID>
+		<SNTileID>185</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>134:6</MCBlockID>
+		<SNTileID>183</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>134:7</MCBlockID>
+		<SNTileID>184</SNTileID>
+	</BlockTranslation>
+	<!--^^ Wooden Stairs Spruce ^^ -->
+	
+	<!--vv Wooden Stairs Birch to Wood Wedges vv -->
+	<BlockTranslation>
+		<MCBlockID>135:0</MCBlockID>
+		<SNTileID>182</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>135:1</MCBlockID>
+		<SNTileID>181</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>135:2</MCBlockID>
+		<SNTileID>179</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>135:3</MCBlockID>
+		<SNTileID>180</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>135:4</MCBlockID>
+		<SNTileID>186</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>135:5</MCBlockID>
+		<SNTileID>185</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>135:6</MCBlockID>
+		<SNTileID>183</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>135:7</MCBlockID>
+		<SNTileID>184</SNTileID>
+	</BlockTranslation>
+	<!--^^ Wooden Stairs Birch ^^ -->
+	
+	<!--vv Beacon to Energy Well vv-->
+	<BlockTranslation>
+		<MCBlockID>138:0</MCBlockID>
+		<SNTileID>137</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Stone Walls (need Stone Walls) -->
+	<BlockTranslation>
+		<MCBlockID>139:0</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>139:1</MCBlockID>
+		<SNTileID>2</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Flower Pot to Air (no equivalent) -->
+	<BlockTranslation>
+		<MCBlockID>140:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!--vv Anvil to Air (no equivalent) vv-->
+	<BlockTranslation>
+		<MCBlockID>145:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>145:1</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>145:2</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>145:3</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	<!--^^ Anvil ^^-->
+	
+	<!--vv Quartz Stone to Marble vv-->
+	<BlockTranslation>
+		<MCBlockID>155:0</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>155:1</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>155:2</MCBlockID>
+		<SNTileID>10</SNTileID>
+	</BlockTranslation>
+	<!--^^ Quartz Stone to Marble ^^-->
+	
+	<!--vv Wooden Stairs Dark Oak to Wood Wedges vv -->
+	<BlockTranslation>
+		<MCBlockID>164:0</MCBlockID>
+		<SNTileID>182</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:1</MCBlockID>
+		<SNTileID>181</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:2</MCBlockID>
+		<SNTileID>179</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:3</MCBlockID>
+		<SNTileID>180</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:4</MCBlockID>
+		<SNTileID>186</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:5</MCBlockID>
+		<SNTileID>185</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:6</MCBlockID>
+		<SNTileID>183</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>164:7</MCBlockID>
+		<SNTileID>184</SNTileID>
+	</BlockTranslation>
+	<!--^^ Wooden Dark Stairs^^ -->
+	
+	<!--vv Flowers vv-->
+	<BlockTranslation>
+		<MCBlockID>175:0</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>175:1</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>175:2</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>175:3</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>175:4</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>175:5</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>175:10</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	<!--^^ Flowers ^^-->
+	
+	<!--vv Fence Gates (need fixed) vv-->
+	<BlockTranslation>
+		<MCBlockID>183:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>184:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>185:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>186:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>187:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	<!--^^ Fence Gates (need fixed) ^^-->
+	
+	<!--vv Fence Gates (need fixed) vv-->
+	<BlockTranslation>
+		<MCBlockID>188:0</MCBlockID>
+		<SNTileID>250</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>189:0</MCBlockID>
+		<SNTileID>250</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>190:0</MCBlockID>
+		<SNTileID>250</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>191:0</MCBlockID>
+		<SNTileID>7019</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>192:0</MCBlockID>
+		<SNTileID>245</SNTileID>
+	</BlockTranslation>
+	<!--^^ Fence Gates (need fixed) ^^-->
+	
+	<!--vv Doors to Air (too difficult to deal with) vv-->
+	<BlockTranslation>
+		<MCBlockID>193:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>193:1</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>193:3</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>193:8</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>193:9</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	<!--^^ Doors ^^-->
+</ArrayOfBlockTranslations>

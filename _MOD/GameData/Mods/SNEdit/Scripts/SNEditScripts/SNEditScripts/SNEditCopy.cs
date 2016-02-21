@@ -20,7 +20,7 @@ namespace SNEdit
         {
             get
             {
-                return "Command to ...";
+                return "Command to temporarily copy the selected area for paste operations.";
             }
         }
 
@@ -36,16 +36,32 @@ namespace SNEdit
 
         public override bool Use(IActor actor, string message, string[] parameters)
         {
-            //save area between pos1 and pos2 into temporary schematic
+            try
+            {
+                //save area between pos1 and pos2 into temporary schematic
+                if (!_Utils.checkParameterCount(parameters, 0, actor))
+                    return false;
 
+                string time             = string.Format("_{0:yyyy-MM-dd_hh-mm-ss}", DateTime.Now);
 
+                String schematicName    = "_tmpcpy_" + actor.Name + time;
+                String sanitizedString  = _Utils.sanitizeString(schematicName);
 
-            Dictionary<string, string> loadInfo = new Dictionary<string, string>();
+                if (!_Utils.storeAreaAsSchematic(actor, sanitizedString, false))
+                    return false;
 
-            loadInfo["schematicName"] = "_tmp_ + actorname + time";
+                Dictionary<string, string> loadInfo = new Dictionary<string, string>();
 
-            return _Utils.storeSessionVar(actor, "SNEditSchematicClipboard", (Object)loadInfo, true);
+                loadInfo["schematicName"]   = schematicName;
+                loadInfo["rotation"]        = "0";
 
+                return _Utils.storeSessionVar(actor, "SNEditSchematicClipboard", (Object)loadInfo, true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return false;
+            }
         }
     }
 }

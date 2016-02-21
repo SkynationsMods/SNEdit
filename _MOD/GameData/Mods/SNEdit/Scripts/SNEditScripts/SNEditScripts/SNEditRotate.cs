@@ -20,7 +20,7 @@ namespace SNEdit
         {
             get
             {
-                return "Command to ...";
+                return "Command to rotate the clipboard (a loaded Schematic or a Copied area).";
             }
         }
 
@@ -43,36 +43,47 @@ namespace SNEdit
             if (!_Utils.checkParameterCount(parameters, 1, actor))
                 return false;
 
-            int rotate = new int();
+            int inputRotate = new int();
             //is integer?
-            try
-            {
-                rotate = Int32.Parse(parameters[1]);
-            }
-            catch (FormatException e)
-            {
+            try {
+                inputRotate = Int32.Parse(parameters[1]);}
+            catch (FormatException e) {
                 errorNotifyUser(actor);
             }
 
-            //is 90, 180, 270 ?
-            if (rotate != 90 && rotate != 180 && rotate != 270)
-            {
-                errorNotifyUser(actor);
+            int rotate = new int();
+            switch(inputRotate) {
+                case (90):
+                    rotate = 1;
+                    break;
+                case (180):
+                    rotate = 2;
+                    break;
+                case (270):
+                    rotate = 3;
+                    break;
+                default:
+                    errorNotifyUser(actor);
+                    return false;
             }
-
-
-            
-
-            
 
             Dictionary<string, string> loadInfo = (Dictionary<string, string>)actor.SessionVariables["SNEditSchematicClipboard"];
             //check if dictionary entry for rotation exists already
+            int finalRotate = 0;
+            if (loadInfo.ContainsKey("rotation"))
+            {//if so, change to new value
+                int savedRotate = Int32.Parse(loadInfo["rotation"]);
+                loadInfo.Remove("rotation");
+                finalRotate = ((savedRotate + rotate) % 4);
+                loadInfo["rotation"] = finalRotate.ToString();
 
-            //if so, change to new value
+            }
+            else
+            {//else add new one
+                loadInfo["rotation"] = rotate.ToString();
+            }
 
-            //else add new one
-
-
+            Server.ChatManager.SendActorMessage("Loaded Schematic rotated by " + inputRotate.ToString() + "°. New Rotation from base is: " + (finalRotate * 90).ToString() + "°.", actor);
             return true;
         }
     }
