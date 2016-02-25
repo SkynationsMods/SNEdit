@@ -369,7 +369,7 @@ namespace SNScriptUtils
         }
 
         //BlocksToBePlacedInSystem = ChunkPos -> [localpos, BlockID]
-        public static bool PlaceBlocksInSystem(Dictionary<Point3D, Dictionary<Point3D, ushort>> BlocksToBePlacedInSystem, IBiomeSystem System, bool replacemode, ushort replaceThisBlockID)
+        public static bool PlaceBlocksInSystem(Dictionary<Point3D, Dictionary<Point3D, ushort>> BlocksToBePlacedInSystem, IBiomeSystem System)
         {
             List<IChunk> newChunkList = new List<IChunk>();
 
@@ -394,30 +394,10 @@ namespace SNScriptUtils
                     chunkNeedsCleanup = true;
                 }
 
-                List<Point3D> replacePoints = new List<Point3D>();
-                if (replacemode)
-                { 
-                    for ( int i = 0; i < workChunk.Blocks.Count(); i++)
-                    {
-                        if (replaceThisBlockID == workChunk.Blocks[i])
-                        {
-                            replacePoints.Add(_Utils.getLocalPosFromBlockIndex(i));
-                        }
-                    }
-                }
-                
                 //Place all Blocks in the Chunk
                 foreach (KeyValuePair<Point3D, ushort> BlocksInChunk in BlockToBePlacedInChunk.Value)
                 {
-                    if (replacemode && replacePoints.Contains(BlocksInChunk.Key))
-                    {
-                        workChunk.ChangeBlock(BlocksInChunk.Value, BlocksInChunk.Key.X, BlocksInChunk.Key.Y, BlocksInChunk.Key.Z, true, true);
-                    }
-
-                    if (!replacemode)
-                    {
-                        workChunk.ChangeBlock(BlocksInChunk.Value, BlocksInChunk.Key.X, BlocksInChunk.Key.Y, BlocksInChunk.Key.Z, true, true);
-                    }
+                    workChunk.ChangeBlock(BlocksInChunk.Value, BlocksInChunk.Key.X, BlocksInChunk.Key.Y, BlocksInChunk.Key.Z, true, true);
                 }
                 
                 if (chunkNeedsCleanup)
@@ -540,29 +520,26 @@ namespace SNScriptUtils
         {
             //Get the server
             IGameServer Server = actor.State as IGameServer;
+            pos1 = new Point3D();
+            pos2 = new Point3D();
 
-            pos1 = (Point3D)actor.SessionVariables["SNEditPos1"];
-            pos2 = (Point3D)actor.SessionVariables["SNEditPos2"];
-
-            if (pos1 == null)
+            if (actor.SessionVariables.ContainsKey("SNEditPos1"))
+                pos1 = (Point3D)actor.SessionVariables["SNEditPos1"];
+            else
             {
                 Server.ChatManager.SendActorMessage("Position 1 is not set.", actor);
                 return false;
             }
-            else if (pos2 == null)
+
+            if (actor.SessionVariables.ContainsKey("SNEditPos2"))
+                pos2 = (Point3D)actor.SessionVariables["SNEditPos2"];
+            else
             {
                 Server.ChatManager.SendActorMessage("Position 2 is not set.", actor);
                 return false;
             }
-            else if (pos2 != null && pos1 != null)
-            {
-                return true;
-            }
-            else
-            {
-                Server.ChatManager.SendActorMessage("Position 1 and Position 2 are not set.", actor);
-                return false;
-            }
+
+            return true;
         }
 
         public static bool FindCustomSpecialBlocksAround(Point3D sourceLocalPos, IChunk Chunk, List<Point3D> offsetList, uint blockID, Dictionary<Point3D, IChunk> ChunkDictionary, out List<Object[,]> SpecialBlockList)

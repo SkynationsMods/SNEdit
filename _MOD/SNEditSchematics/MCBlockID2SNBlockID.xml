@@ -3,7 +3,7 @@
 
 	<BlockTranslation>
 		<MCBlockID>default</MCBlockID>
-		<SNTileID>10</SNTileID>
+		<SNTileID>4</SNTileID>
 	</BlockTranslation>
 
 	<BlockTranslation>
@@ -190,6 +190,11 @@
 	
 	<BlockTranslation>
 		<MCBlockID>17:8</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:9</MCBlockID>
 		<SNTileID>21</SNTileID>
 	</BlockTranslation>
 	<!--^^ Logs ^^-->
@@ -471,15 +476,21 @@
 	</BlockTranslation>
 	<!--^^ Flowers ^^-->
 	
+	<!-- Block of Iron -->
+	<BlockTranslation>
+		<MCBlockID>42:0</MCBlockID>
+		<SNTileID>135</SNTileID>
+	</BlockTranslation>
+	
 	<!--vv Double Slabs vv-->
 	<BlockTranslation> <!-- Stone Slab (Double) to Brick -->
 		<MCBlockID>43:0</MCBlockID>
-		<SNTileID>13</SNTileID>
+		<SNTileID>36</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation><!-- Sandstone Slab (Double) to Ancient Brick -->
 		<MCBlockID>43:1</MCBlockID>
-		<SNTileID>51</SNTileID>
+		<SNTileID>56</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation><!-- Wooden Slab (Double) to Plank Brick -->
@@ -492,38 +503,36 @@
 		<SNTileID>2</SNTileID>
 	</BlockTranslation>
 	
-	<BlockTranslation>
+	<BlockTranslation><!-- Brick Slab (Double) to Red Stone Bricks -->
 		<MCBlockID>43:4</MCBlockID>
-		<SNTileID>10</SNTileID>
+		<SNTileID>36</SNTileID>
 	</BlockTranslation>
 	
-	<BlockTranslation>
+	<BlockTranslation><!-- Stone Brick Slab (Double) to Stone Bricks -->
 		<MCBlockID>43:5</MCBlockID>
-		<SNTileID>10</SNTileID>
+		<SNTileID>18</SNTileID>
 	</BlockTranslation>
 	
-	<BlockTranslation>
+	<BlockTranslation><!-- Nether Brick Slab (Double) to Red Stone Bricks -->
 		<MCBlockID>43:6</MCBlockID>
-		<SNTileID>10</SNTileID>
+		<SNTileID>36</SNTileID>
 	</BlockTranslation>
 	
-	<BlockTranslation>
+	<BlockTranslation><!-- Quartz Slab (Double) to Marble -->
 		<MCBlockID>43:7</MCBlockID>
 		<SNTileID>10</SNTileID>
 	</BlockTranslation>
 	
-	<BlockTranslation><!-- Smooth Stone Slab to Ancient Slab -->
+	<BlockTranslation><!-- Smooth Stone Slab (Double) to Ancient Slab -->
 		<MCBlockID>43:8</MCBlockID>
 		<SNTileID>67</SNTileID>
 	</BlockTranslation>
 	
-	<BlockTranslation>
+	<BlockTranslation><!-- Smooth Sandstone Slab (Double) to Ancient Brick -->
 		<MCBlockID>43:9</MCBlockID>
-		<SNTileID>10</SNTileID>
+		<SNTileID>56</SNTileID>
 	</BlockTranslation>
 	<!--^^ Double Slabs ^^-->
-	
-	
 	
 	<!--vv Stone Slabs (Lower) vv-->
 	<BlockTranslation>
@@ -771,6 +780,16 @@
 		<MCBlockID>65:3</MCBlockID>
 		<SNTileID>25</SNTileID>
 	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>65:4</MCBlockID>
+		<SNTileID>26</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>65:5</MCBlockID>
+		<SNTileID>27</SNTileID>
+	</BlockTranslation>
 	<!--^^ Ladder ^^-->
 	
 	<!--vv Cobblestone Stairs vv-->
@@ -903,6 +922,38 @@
 		<SNTileID>58</SNTileID>	
 	</BlockTranslation>
 	<!--^^ Wooden Pressure ^^-->
+	
+	<!--^^ Button to Air (no equivalent) ^^-->
+	<BlockTranslation>
+		<MCBlockID>77:0</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>77:1</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>77:2</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>77:3</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>77:4</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>77:5</MCBlockID>
+		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	<!--^^ Button ^^-->
 	
 	<BlockTranslation>
 		<MCBlockID>85:0</MCBlockID>
@@ -1196,6 +1247,48 @@
 	</BlockTranslation>
 	<!--^^ Wooden Step Variants (Upper) ^^-->
 	
+	<!--vv  Sand Stone Stairs To Stone Wedges vv-->
+	<BlockTranslation>
+		<MCBlockID>128:0</MCBlockID>
+		<SNTileID>230</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>128:1</MCBlockID>
+		<SNTileID>229</SNTileID>
+	</BlockTranslation> 
+
+	<BlockTranslation>
+		<MCBlockID>128:2</MCBlockID>
+		<SNTileID>227</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>128:3</MCBlockID>
+		<SNTileID>228</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>128:4</MCBlockID>
+		<SNTileID>234</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>128:5</MCBlockID>
+		<SNTileID>233</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>128:6</MCBlockID>
+		<SNTileID>231</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>128:7</MCBlockID>
+		<SNTileID>232</SNTileID>	
+	</BlockTranslation>
+	<!--^^ Sand Stone Stairs ^^-->
+	
 	<!--vv Wooden Stairs Spruce to Wood Wedges vv -->
 	<BlockTranslation>
 		<MCBlockID>134:0</MCBlockID>
@@ -1341,6 +1434,48 @@
 		<SNTileID>10</SNTileID>
 	</BlockTranslation>
 	<!--^^ Quartz Stone to Marble ^^-->
+	
+	<!--vv  Quartz Stairs To Stone Wedges vv-->
+	<BlockTranslation>
+		<MCBlockID>156:0</MCBlockID>
+		<SNTileID>230</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>156:1</MCBlockID>
+		<SNTileID>229</SNTileID>
+	</BlockTranslation> 
+
+	<BlockTranslation>
+		<MCBlockID>156:2</MCBlockID>
+		<SNTileID>227</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>156:3</MCBlockID>
+		<SNTileID>228</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>156:4</MCBlockID>
+		<SNTileID>234</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>156:5</MCBlockID>
+		<SNTileID>233</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>156:6</MCBlockID>
+		<SNTileID>231</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>156:7</MCBlockID>
+		<SNTileID>232</SNTileID>	
+	</BlockTranslation>
+	<!--^^ Quartz Stairs ^^-->
 	
 	<!--vv Wooden Stairs Dark Oak to Wood Wedges vv -->
 	<BlockTranslation>

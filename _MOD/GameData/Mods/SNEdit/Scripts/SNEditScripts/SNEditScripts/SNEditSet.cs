@@ -68,7 +68,7 @@ namespace SNEdit
             if (!_Utils.SplitFakeGlobalPosBlocklistIntoChunksAndLocalPos(fakeGlobalPosAndBlockID, out BlocksToBePlacedInSystem))
                 return false;
 
-            if (_Utils.PlaceBlocksInSystem(BlocksToBePlacedInSystem, checkSystem, false, (ushort)0))
+            if (_Utils.PlaceBlocksInSystem(BlocksToBePlacedInSystem, checkSystem))
                 return true;
             else
                 return false;

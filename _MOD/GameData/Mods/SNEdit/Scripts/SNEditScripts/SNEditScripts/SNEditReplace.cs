@@ -35,29 +35,30 @@ namespace SNEdit
         }
 
         public override bool Use(IActor actor, string message, string[] parameters)
-        {//TODO: replace with 1 parameter -> replaceThisBlockID everything except 0
+        {
             ushort replaceThisBlockID = new ushort();
             ushort newBlockID = new ushort();
+            bool replaceAllSolids = false;
 
             if (parameters.Length == 3)
-            {
-                replaceThisBlockID   = ushort.Parse(parameters[1]);
-                newBlockID           = ushort.Parse(parameters[2]);
-            }
-            /*
-            if (parameters.Length == 2)
             {
                 replaceThisBlockID = ushort.Parse(parameters[1]);
                 newBlockID = ushort.Parse(parameters[2]);
             }
-            */
+
+            if (parameters.Length == 2)
+            {
+                replaceAllSolids = true;
+                replaceThisBlockID = 0;
+                newBlockID = ushort.Parse(parameters[1]);
+            }
+               
             if (!_Utils.checkParameterCount(parameters, 2, actor))
                 return false;
 
-            
-
             IBiomeSystem checkSystem = Server.Biomes.GetSystems()[actor.InstanceID];
             IChunk checkChunk = checkSystem.ChunkCollection[0];
+
             if (!_Utils.blockTypeExists(checkChunk, replaceThisBlockID, actor))
                 return false;
 
@@ -68,20 +69,26 @@ namespace SNEdit
             if (!_Utils.checkStoredPositions(actor, out pos1, out pos2))
                 return false;
 
-            //calculate absolute distance (absdiff) and direction (valinc) to get from Point1 to Point2
-            int absdiffx; int valincx; int absdiffy; int valincy; int absdiffz; int valincz;
-            _Utils.calcAbsDiffAndValinc(pos1.X, pos2.X, out absdiffx, out valincx);
-            _Utils.calcAbsDiffAndValinc(pos1.Y, pos2.Y, out absdiffy, out valincy);
-            _Utils.calcAbsDiffAndValinc(pos1.Z, pos2.Z, out absdiffz, out valincz);
+            Point3D posOrigin = _Utils.calcCuboidOrigin(pos1, pos2);
+            Point3D cuboidDimensions = _Utils.calcCuboidDimensions(pos1, pos2);
 
+            Dictionary<Point3D, IChunk> chunkDictionary = _Utils.CreateChunkDictionary(checkSystem);
             Dictionary<Point3D, ushort> fakeGlobalPosAndBlockID = new Dictionary<Point3D, ushort>();
-            for (int y = 0; y <= (absdiffy); y++)
+
+            ushort blockID;
+            Point3D tmpPoint;
+            for (int y = 0; y < (cuboidDimensions.Y); y++)
             {
-                for (int z = 0; z <= (absdiffz); z++)
+                for (int z = 0; z < (cuboidDimensions.Z); z++)
                 {
-                    for (int x = 0; x <= (absdiffx); x++)
-                    {   //Dictionary contains <fakeGlobalPos, blockID>
-                        fakeGlobalPosAndBlockID.Add(new Point3D((pos1.X + (x * valincx)), (pos1.Y + (y * valincy)), (pos1.Z + (z * valincz))), newBlockID);
+                    for (int x = 0; x < (cuboidDimensions.X); x++)
+                    {
+                        tmpPoint = new Point3D(posOrigin.X + x, posOrigin.Y + y, posOrigin.Z + z);
+                        _Utils.GetBlockIdAtFakeGlobalPos(chunkDictionary, tmpPoint, out blockID);
+                        if ((blockID == replaceThisBlockID) && !replaceAllSolids)
+                            fakeGlobalPosAndBlockID.Add(tmpPoint, newBlockID);
+                        if ((blockID != 0) && replaceAllSolids)
+                            fakeGlobalPosAndBlockID.Add(tmpPoint, newBlockID);
                     }
                 }
             }
@@ -90,7 +97,7 @@ namespace SNEdit
             if (!_Utils.SplitFakeGlobalPosBlocklistIntoChunksAndLocalPos(fakeGlobalPosAndBlockID, out BlocksToBePlacedInSystem))
                 return false;
 
-            if (_Utils.PlaceBlocksInSystem(BlocksToBePlacedInSystem, checkSystem, true, replaceThisBlockID))
+            if (_Utils.PlaceBlocksInSystem(BlocksToBePlacedInSystem, checkSystem))
                 return true;
             else
                 return false;
