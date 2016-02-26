@@ -7,14 +7,14 @@ Contributors (in no particular order): Aerion, Vanto
 
 ### Implemented so far:
 
-\/\/pos <1/2>  
-\/\/set <blockID>  
-\/\/replace <blockID> <blockID>  
-\/\/copy  
-\/\/load <filename>  
-\/\/rotate <90/180/270>  
-\/\/paste  
-\/\/posinfo  
+//pos <1/2>  
+//set <blockID>  
+//replace <blockID> <blockID>  
+//copy  
+//load <filename>  
+//rotate <90/180/270>  
+//paste  
+//posinfo  
 
 ## How to Install the Mod?
 
