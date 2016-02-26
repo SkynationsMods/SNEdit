@@ -3,9 +3,9 @@
   
 <!-- Pos 1 Tool -->
   <BaseItemData>
-    <ID>8000</ID>
+    <ID>7000</ID>
     <Name>SNEdit Pos 1</Name>
-    <Description>Using this item will trigger the script in Class tags!</Description>
+    <Description>Tool that sets //pos 1 to the targetted Blocks Position on left click.</Description>
     <Use>None</Use>
     <Class>SNEdit.PosATool</Class>
     <Price>1</Price>    
