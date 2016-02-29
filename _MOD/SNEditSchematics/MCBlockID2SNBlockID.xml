@@ -6,8 +6,15 @@
 		<SNTileID>4</SNTileID>
 	</BlockTranslation>
 
+	<!-- Air to Air -->
 	<BlockTranslation>
 		<MCBlockID>0:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<!-- Air(?) to Air -->
+	<BlockTranslation>
+		<MCBlockID>0:8</MCBlockID>
 		<SNTileID>0</SNTileID>
 	</BlockTranslation>
 	
@@ -51,6 +58,21 @@
 	<!-- Grass -->
 	<BlockTranslation>
 		<MCBlockID>2:0</MCBlockID>
+		<SNTileID>1</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>2:5</MCBlockID>
+		<SNTileID>1</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>2:6</MCBlockID>
+		<SNTileID>1</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>2:7</MCBlockID>
 		<SNTileID>1</SNTileID>
 	</BlockTranslation>
 	
@@ -109,6 +131,58 @@
 		<SNTileID>12</SNTileID>
 	</BlockTranslation>
 	<!--^^ Wood Plank Variants ^^-->
+	
+	<!--vv Saplings to Grass vv-->
+	<BlockTranslation>
+		<MCBlockID>6:0</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>6:1</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>6:2</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>6:3</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>6:4</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+
+	<BlockTranslation>
+		<MCBlockID>6:5</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>6:6</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>6:7</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>6:8</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>6:9</MCBlockID>
+		<SNTileID>12</SNTileID>
+	</BlockTranslation>
+	<!--^^ Saplings ^^-->
 	
 	<!--vv Water To Ice vv-->
 	<BlockTranslation>
@@ -270,6 +344,21 @@
 	
 	<BlockTranslation>
 		<MCBlockID>17:9</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:10</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:11</MCBlockID>
+		<SNTileID>21</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>17:12</MCBlockID>
 		<SNTileID>21</SNTileID>
 	</BlockTranslation>
 	<!--^^ Logs ^^-->
@@ -823,6 +912,90 @@
 		<SNTileID>16</SNTileID>
 	</BlockTranslation>
 	
+	<!--vv Wheat (Crop) to Grass vv-->
+	<BlockTranslation>
+		<MCBlockID>59:0</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>59:1</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>59:2</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>59:3</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>59:4</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>59:5</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>59:6</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>59:7</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	<!--^^ Wheat (Crop) ^^-->
+	
+	<!--vv Farmland to Dirt vv-->
+	<BlockTranslation>
+		<MCBlockID>60:0</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>60:1</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>60:2</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>60:3</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>60:4</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>60:5</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>60:6</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>60:7</MCBlockID>
+		<SNTileID>5</SNTileID>
+	</BlockTranslation>
+	<!--^^ Farmland ^^-->
+	
 	<!--vv Furnace (rotations) vv-->
 	<BlockTranslation>
 		<MCBlockID>61:2</MCBlockID>
@@ -844,6 +1017,38 @@
 		<SNTileID>14</SNTileID>
 	</BlockTranslation>
 	<!--^^ Furnace ^^-->
+	
+	<!--vv Doors to Air (too difficult to deal with) vv-->
+	<BlockTranslation>
+		<MCBlockID>64:0</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>64:1</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>64:3</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>64:4</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>64:8</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>64:9</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	<!--^^ Doors ^^-->
 	
 	<!--vv Ladder vv-->
 	<BlockTranslation>
@@ -868,12 +1073,12 @@
 	
 	<BlockTranslation>
 		<MCBlockID>65:4</MCBlockID>
-		<SNTileID>26</SNTileID>
+		<SNTileID>27</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>65:5</MCBlockID>
-		<SNTileID>27</SNTileID>
+		<SNTileID>26</SNTileID>
 	</BlockTranslation>
 	<!--^^ Ladder ^^-->
 	
@@ -1057,6 +1262,12 @@
 		<SNTileID>36</SNTileID>	
 	</BlockTranslation>
 	
+	<!-- Sould Sand to Sand -->
+	<BlockTranslation>
+		<MCBlockID>88:0</MCBlockID>
+		<SNTileID>7</SNTileID>	
+	</BlockTranslation>
+	
 	<!-- Glow Stone to Lantern -->
 	<BlockTranslation>
 		<MCBlockID>89:0</MCBlockID>
@@ -1066,6 +1277,16 @@
 	<!--vv Trapdoor to Wooden Hatch (rotations and attachments) vv-->
 	<BlockTranslation>
 		<MCBlockID>96:0</MCBlockID>
+		<SNTileID>10208</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>96:1</MCBlockID>
+		<SNTileID>10208</SNTileID>	
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>96:2</MCBlockID>
 		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
@@ -1275,6 +1496,23 @@
 	<BlockTranslation>
 		<MCBlockID>118:0</MCBlockID>
 		<SNTileID>0</SNTileID>	
+	</BlockTranslation>
+	
+	<!-- Enchantment Table to Power Display -->
+	<BlockTranslation>
+		<MCBlockID>116:0</MCBlockID>
+		<SNTileID>238</SNTileID>	
+	</BlockTranslation>
+	
+	<!-- Redstone lamp to Lamp -->
+	<BlockTranslation><!-- OFF -->
+		<MCBlockID>123:0</MCBlockID>
+		<SNTileID>22</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation><!-- ON -->
+		<MCBlockID>124:0</MCBlockID>
+		<SNTileID>22</SNTileID>
 	</BlockTranslation>
 	
 	<!--vv Wooden Double Slabs to Plank vv-->
@@ -1522,6 +1760,12 @@
 		<SNTileID>0</SNTileID>
 	</BlockTranslation>
 	
+	<!-- Button(Wood) to Air (no equivalent) -->
+	<BlockTranslation>
+		<MCBlockID>143:3</MCBlockID>
+		<SNTileID>0</SNTileID>
+	</BlockTranslation>
+	
 	<!--vv Anvil to Air (no equivalent) vv-->
 	<BlockTranslation>
 		<MCBlockID>145:0</MCBlockID>
@@ -1667,6 +1911,12 @@
 	</BlockTranslation>
 	<!--^^ Wooden Dark Stairs^^ -->
 	
+	<!-- Sea latern to Green lantern -->
+	<BlockTranslation>
+		<MCBlockID>169:0</MCBlockID>
+		<SNTileID>161</SNTileID>
+	</BlockTranslation>
+	
 	<!-- Carpet to Carpet (all colors to white) -->
 	<BlockTranslation>
 		<MCBlockID>171:0</MCBlockID>
@@ -1778,6 +2028,26 @@
 	
 	<BlockTranslation>
 		<MCBlockID>175:5</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>175:6</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>175:7</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>175:8</MCBlockID>
+		<SNTileID>46</SNTileID>
+	</BlockTranslation>
+	
+	<BlockTranslation>
+		<MCBlockID>175:9</MCBlockID>
 		<SNTileID>46</SNTileID>
 	</BlockTranslation>
 	

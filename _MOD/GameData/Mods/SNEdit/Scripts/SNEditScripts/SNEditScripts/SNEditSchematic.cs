@@ -20,6 +20,9 @@ namespace SNEdit
         public int Height;
         public int Length;
         public int Width;
+        public int WEOffsetX;
+        public int WEOffsetY;
+        public int WEOffsetZ;
 
         public ushort[] blocks;
     }

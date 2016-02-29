@@ -69,8 +69,11 @@ namespace SNEdit
                     rotate = Int32.Parse(loadInfo["rotation"]);
                 else
                     rotate = 0;
-                
-                if(!_Utils.SchematicToFakeGlobalPosAndBlockID(Schematic, _Utils.GetActorFakeGlobalPos(actor, new Point3D(0, -1, 0)), rotate, out fakeGlobalPosAndBlockID))
+
+                Point3D pasteOrigin = _Utils.GetActorFakeGlobalPos(actor, new Point3D(0 + Schematic.WEOffsetX, -1 + Schematic.WEOffsetY, 0 + Schematic.WEOffsetZ));
+
+
+                if (!_Utils.SchematicToFakeGlobalPosAndBlockID(Schematic, pasteOrigin, rotate, out fakeGlobalPosAndBlockID))
                     return false;
 
 

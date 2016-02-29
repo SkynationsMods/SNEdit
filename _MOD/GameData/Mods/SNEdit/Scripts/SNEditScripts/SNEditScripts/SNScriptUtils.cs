@@ -30,6 +30,7 @@ namespace SNScriptUtils
             String type = "MC";
             int[] TileArray = null; byte[] MetaDataArray = null; byte[] BlockArray = null;
             int SchematicHeight = new int(); int SchematicWidth = new int(); int SchematicLength = new int(); int BlockCount = new int();
+            int WEOffsetX = 0; int WEOffsetY = 0; int WEOffsetZ = 0;
             schematic = null;
 
             try {
@@ -37,6 +38,18 @@ namespace SNScriptUtils
                 NbtTag SNEditTag = NbtFile.RootTag["SNEdit"];
                 if (SNEditTag != null)
                     type = "SN";
+
+                NbtTag WEOffsetXTag = NbtFile.RootTag["WEOffsetX"];
+                if (WEOffsetXTag != null)
+                    WEOffsetX = WEOffsetXTag.IntValue;
+
+                NbtTag WEOffsetYTag = NbtFile.RootTag["WEOffsetY"];
+                if (WEOffsetYTag != null)
+                    WEOffsetY = WEOffsetYTag.IntValue;
+
+                NbtTag WEOffsetZTag = NbtFile.RootTag["WEOffsetZ"];
+                if (WEOffsetZTag != null)
+                    WEOffsetZ = WEOffsetZTag.IntValue;
 
                 SchematicHeight = NbtFile.RootTag["Height"].IntValue;
                 SchematicWidth = NbtFile.RootTag["Width"].IntValue;
@@ -78,6 +91,7 @@ namespace SNScriptUtils
             } 
             
             schematic = new Schematic(SchematicHeight, SchematicLength, SchematicWidth, blocks);
+            schematic.WEOffsetX = WEOffsetX; schematic.WEOffsetY = WEOffsetY; schematic.WEOffsetZ = WEOffsetZ;
             return true;
         }
 
@@ -736,15 +750,24 @@ namespace SNScriptUtils
             XmlNodeList BlockTranslationList = xdoc.DocumentElement.SelectNodes(xpathquery);
 
             Dictionary<string, ushort> translationDictionary = new Dictionary<string, ushort>();
-
-            foreach (XmlNode BlockTranslation in BlockTranslationList)
+            int i = 0;
+            try
             {
-                translationDictionary.Add(
-                    BlockTranslation["MCBlockID"].InnerText,
-                    ushort.Parse((BlockTranslation["SNTileID"].InnerText)) 
-                    );
+               
+                for(i = 0; i < BlockTranslationList.Count; i++)
+                {
+                    translationDictionary.Add(
+                        (BlockTranslationList[i])["MCBlockID"].InnerText,
+                        ushort.Parse(((BlockTranslationList[i])["SNTileID"].InnerText))
+                        );
+                }
             }
-
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                Console.WriteLine("Entry that was just being added: MCBlockID = " + (BlockTranslationList[i])["MCBlockID"].InnerText + " SNTileID = " + (BlockTranslationList[i])["SNTileID"].InnerText);
+                Console.WriteLine("The Entry is likely twice in the XML.");
+            }
             return translationDictionary;
         }
 
