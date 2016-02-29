@@ -663,42 +663,42 @@
 	<!--vv Stone Slabs (Upper) vv-->
 	<BlockTranslation>
 		<MCBlockID>44:8</MCBlockID>
-		<SNTileID>7159</SNTileID>
+		<SNTileID>12405</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>44:9</MCBlockID>
-		<SNTileID>7159</SNTileID>
+		<SNTileID>12405</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>44:10</MCBlockID>
-		<SNTileID>7159</SNTileID>
+		<SNTileID>12405</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>44:11</MCBlockID>
-		<SNTileID>7159</SNTileID>
+		<SNTileID>12405</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>44:12</MCBlockID>
-		<SNTileID>7159</SNTileID>
+		<SNTileID>12405</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>44:13</MCBlockID>
-		<SNTileID>7159</SNTileID>
+		<SNTileID>12405</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>44:14</MCBlockID>
-		<SNTileID>7159</SNTileID>
+		<SNTileID>12405</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>44:15</MCBlockID>
-		<SNTileID>7159</SNTileID>
+		<SNTileID>12405</SNTileID>
 	</BlockTranslation>
 	<!--^^ Stone Slabs (Upper) ^^-->
 	
@@ -1066,67 +1066,67 @@
 	<!--vv Trapdoor to Wooden Hatch (rotations and attachments) vv-->
 	<BlockTranslation>
 		<MCBlockID>96:0</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:4</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:5</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:6</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:7</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:8</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:9</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:10</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:11</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:12</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:13</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:14</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:15</MCBlockID>
-		<SNTileID>7090</SNTileID>	
+		<SNTileID>10208</SNTileID>	
 	</BlockTranslation>
 	<!--^^ Trapdoor to Wooden Hatch ^^-->
 	
@@ -1344,32 +1344,32 @@
 	<!--vv Wooden Step Variants (Upper)vv-->
 	<BlockTranslation>
 		<MCBlockID>126:8</MCBlockID>
-		<SNTileID>7158</SNTileID>
+		<SNTileID>12404</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>126:9</MCBlockID>
-		<SNTileID>7158</SNTileID>
+		<SNTileID>12404</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>126:10</MCBlockID>
-		<SNTileID>7158</SNTileID>
+		<SNTileID>12404</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>126:11</MCBlockID>
-		<SNTileID>7158</SNTileID>
+		<SNTileID>12404</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>126:12</MCBlockID>
-		<SNTileID>7158</SNTileID>
+		<SNTileID>12404</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>126:13</MCBlockID>
-		<SNTileID>7158</SNTileID>
+		<SNTileID>12404</SNTileID>
 	</BlockTranslation>
 	<!--^^ Wooden Step Variants (Upper) ^^-->
 	
@@ -1670,82 +1670,82 @@
 	<!-- Carpet to Carpet (all colors to white) -->
 	<BlockTranslation>
 		<MCBlockID>171:0</MCBlockID>
-		<SNTileID>7004</SNTileID>
+		<SNTileID>7000</SNTileID>
 	</BlockTranslation>
 
 	<BlockTranslation>
 		<MCBlockID>171:1</MCBlockID>
-		<SNTileID>7004</SNTileID>
+		<SNTileID>7000</SNTileID>
 	</BlockTranslation> 
 
 	<BlockTranslation>
 		<MCBlockID>171:2</MCBlockID>
-		<SNTileID>7004</SNTileID>
+		<SNTileID>7000</SNTileID>
 	</BlockTranslation>
 
 	<BlockTranslation>
 		<MCBlockID>171:3</MCBlockID>
-		<SNTileID>7004</SNTileID>
+		<SNTileID>7000</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:4</MCBlockID>
-		<SNTileID>7004</SNTileID>
+		<SNTileID>7000</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:5</MCBlockID>
-		<SNTileID>7004</SNTileID>
+		<SNTileID>7000</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:6</MCBlockID>
-		<SNTileID>7004</SNTileID>
+		<SNTileID>7000</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:7</MCBlockID>
-		<SNTileID>7004</SNTileID>	
+		<SNTileID>7000</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:8</MCBlockID>
-		<SNTileID>7004</SNTileID>	
+		<SNTileID>7000</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:9</MCBlockID>
-		<SNTileID>7004</SNTileID>	
+		<SNTileID>7000</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:10</MCBlockID>
-		<SNTileID>7004</SNTileID>	
+		<SNTileID>7000</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:11</MCBlockID>
-		<SNTileID>7004</SNTileID>	
+		<SNTileID>7000</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:12</MCBlockID>
-		<SNTileID>7004</SNTileID>	
+		<SNTileID>7000</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:13</MCBlockID>
-		<SNTileID>7004</SNTileID>	
+		<SNTileID>7000</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:14</MCBlockID>
-		<SNTileID>7004</SNTileID>	
+		<SNTileID>7000</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>171:15</MCBlockID>
-		<SNTileID>7004</SNTileID>	
+		<SNTileID>7000</SNTileID>	
 	</BlockTranslation>
 	<!-- Carpet Colors -->
 	

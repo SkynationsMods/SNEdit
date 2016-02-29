@@ -399,7 +399,7 @@ namespace SNScriptUtils
                 {
                     workChunk.ChangeBlock(BlocksInChunk.Value, BlocksInChunk.Key.X, BlocksInChunk.Key.Y, BlocksInChunk.Key.Z, true, true);
                 }
-                
+
                 if (chunkNeedsCleanup)
                 {
                     ushort tmpBlockID = 4;
