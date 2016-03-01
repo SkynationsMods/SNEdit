@@ -20,7 +20,7 @@ namespace SNEdit
         {
             get
             {
-                return "A test command in ScriptsExample.";
+                return "Outputs information about the players current Position; For developer purposes.";
             }
         }
 

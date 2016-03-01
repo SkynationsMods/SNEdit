@@ -19,10 +19,10 @@ namespace SNEdit
         {
             get
             {
-                return "Fill area with the given Block ID.";
+                return "Fills an area with the given Block ID.";
             }
         }
-
+        
         public override Priviledges Priviledge
         {
             get { return Priviledges.Player; }

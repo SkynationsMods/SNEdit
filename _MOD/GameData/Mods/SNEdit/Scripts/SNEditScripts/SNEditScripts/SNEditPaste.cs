@@ -81,7 +81,15 @@ namespace SNEdit
                 Dictionary<Point3D, Dictionary<Point3D, ushort>> BlocksToBePlacedInSystem = new Dictionary<Point3D, Dictionary<Point3D, ushort>>();
                 _Utils.SplitFakeGlobalPosBlocklistIntoChunksAndLocalPos(fakeGlobalPosAndBlockID, out BlocksToBePlacedInSystem);
 
-                return SNScriptUtils._Utils.PlaceBlocksInSystem(BlocksToBePlacedInSystem, ((IGameServer)actor.State).Biomes.GetSystems()[actor.InstanceID]);
+                bool opresult = SNScriptUtils._Utils.PlaceBlocksInSystem(BlocksToBePlacedInSystem, ((IGameServer)actor.State).Biomes.GetSystems()[actor.InstanceID]);
+
+                if(!opresult)
+                    return false;
+                else{
+                    Server.ChatManager.SendActorMessage("Pasting done!", actor);
+                    return true;
+                }
+                    
 
             }
             catch (Exception e)
