@@ -1277,78 +1277,84 @@
 	<!--vv Trapdoor to Wooden Hatch (rotations and attachments) vv-->
 	<BlockTranslation>
 		<MCBlockID>96:0</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10254</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:1</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10255</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:2</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10257</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
+		<MCBlockID>96:3</MCBlockID>
+		<SNTileID>10256</SNTileID>	
+	</BlockTranslation>
+									<!--4-->
+	<BlockTranslation>
 		<MCBlockID>96:4</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10250</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:5</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10251</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:6</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10253</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:7</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10252</SNTileID>	
 	</BlockTranslation>
-	
+									<!--4-->
 	<BlockTranslation>
 		<MCBlockID>96:8</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10254</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:9</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10255</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:10</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10257</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:11</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10256</SNTileID>	
 	</BlockTranslation>
-	
+									<!--4-->
 	<BlockTranslation>
 		<MCBlockID>96:12</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10250</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:13</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10251</SNTileID>	
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:14</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10253</SNTileID>
 	</BlockTranslation>
 	
 	<BlockTranslation>
 		<MCBlockID>96:15</MCBlockID>
-		<SNTileID>10208</SNTileID>	
+		<SNTileID>10252</SNTileID>	
 	</BlockTranslation>
+									<!--4-->
 	<!--^^ Trapdoor to Wooden Hatch ^^-->
 	
 	<!--vv Monster Egg (Stone) to Stone Bricks vv-->
