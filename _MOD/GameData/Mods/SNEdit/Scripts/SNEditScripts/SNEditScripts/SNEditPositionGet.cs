@@ -23,7 +23,7 @@ namespace SNEdit
 
         public override Priviledges Priviledge
         {
-            get { return Priviledges.Player; }
+            get { return Priviledges.Admin; }
         }
 
         public GetPos(IGameServer server) : base(server) { }
