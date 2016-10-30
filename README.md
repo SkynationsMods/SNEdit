@@ -27,3 +27,8 @@ If you want to contribute, take a look at the public Trello board [here](https:/
 ## About Modding
 For further information about modding in Sky Nations, go to [Sky Nations Wiki](http://wiki.skynations.net/doku.php?id=modding "Sky Nations Wiki - Modding").  
 Do not forget to check out the `SNScriptUtils.cs`, there you can find lots of useful functions making life with Chunks, Systems and the way SkyNations does things a lot easier.
+
+## About Sky Nations
+"Sky Nations is a multiplayer sandbox game set in a world of floating islands and air ships. Players can construct air ships as they adventure across procedural maps. Different types of islands contain materials and loot which can be crafted into useful items waiting to be discovered. Players can battle in PVP with ships and on the ground over territory and for fun!"
+
+To learn more about [Sky Nations](https://skynations.net/ "Sky Nations main page"), follow the link to the main page.
