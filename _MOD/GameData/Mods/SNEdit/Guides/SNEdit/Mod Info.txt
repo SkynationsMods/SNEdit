@@ -1,1 +1,2 @@
-tbd
+This Mod was inspired by the Minecraft Mod WorldEdit and most of the existing commands are very similar as well.
+For any requests on what commands to implement next, refer to the Github Page under https://github.com/SkynationsMods/SNEdit
